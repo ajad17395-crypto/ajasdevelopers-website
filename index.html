@@ -223,6 +223,139 @@
                 Easy to Use
               </span>
             </div>
+
+            <!-- App Screenshots Preview Section -->
+            <div class="app-screenshots-wrapper">
+              <div class="screenshots-header">
+                <div class="screenshots-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  <span>App Screenshots Preview</span>
+                </div>
+                <div class="screenshots-actions">
+                  <button type="button" class="btn-screenshot-action" id="resetScreenshotsBtn" style="display: none;">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    <span>Reset Default</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Upload Instruction Banner -->
+              <div class="screenshots-instruction">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <span><strong>Add your own app screenshots:</strong> Click "Upload Image" below or drag &amp; drop screenshot PNG/JPG files directly onto any phone frame. You can also save files named <code>screenshot1.png</code>, <code>screenshot2.png</code>, and <code>screenshot3.png</code> in your project's <code>assets/</code> folder.</span>
+              </div>
+
+              <div class="screenshots-grid">
+                <!-- Screenshot 1 -->
+                <div class="screenshot-card">
+                  <div class="screenshot-device" id="deviceDrop1" data-screenshot-index="1">
+                    <div class="screenshot-notch"></div>
+                    <img id="screenshotImg1" class="screenshot-user-img" src="assets/screenshot1.png" alt="GPS Camera App Screenshot 1" style="display: none;" />
+                    <div class="screenshot-screen screenshot-screen-camera" id="screenshotMock1">
+                      <div class="screenshot-header-bar">
+                        <span>GPS Camera</span>
+                        <span class="screenshot-status">LIVE</span>
+                      </div>
+                      <div class="screenshot-viewport">
+                        <div class="mini-map-pin">
+                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
+                        </div>
+                        <div class="screenshot-stamp">
+                          <div class="stamp-line-bold">📍 Bengaluru, KA</div>
+                          <div class="stamp-line-sub">LAT: 12.9716° N</div>
+                          <div class="stamp-line-sub">2026-08-08 | 11:52 AM</div>
+                        </div>
+                      </div>
+                      <div class="screenshot-controls">
+                        <div class="mini-shutter"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="screenshot-label-row">
+                    <span class="screenshot-label">Live GPS Stamp</span>
+                    <label class="btn-upload-badge" for="uploadInput1" title="Upload custom screenshot for Slot 1">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                      <span>Upload</span>
+                    </label>
+                    <input type="file" id="uploadInput1" accept="image/*" class="screenshot-file-input" style="display: none;" />
+                  </div>
+                </div>
+
+                <!-- Screenshot 2 -->
+                <div class="screenshot-card">
+                  <div class="screenshot-device" id="deviceDrop2" data-screenshot-index="2">
+                    <div class="screenshot-notch"></div>
+                    <img id="screenshotImg2" class="screenshot-user-img" src="assets/screenshot2.png" alt="GPS Camera App Screenshot 2" style="display: none;" />
+                    <div class="screenshot-screen screenshot-screen-settings" id="screenshotMock2">
+                      <div class="screenshot-header-bar">
+                        <span>Stamp Options</span>
+                      </div>
+                      <div class="screenshot-settings-list">
+                        <div class="setting-row">
+                          <span>Address</span>
+                          <span class="mini-toggle active"></span>
+                        </div>
+                        <div class="setting-row">
+                          <span>Lat / Long</span>
+                          <span class="mini-toggle active"></span>
+                        </div>
+                        <div class="setting-row">
+                          <span>Date &amp; Time</span>
+                          <span class="mini-toggle active"></span>
+                        </div>
+                        <div class="setting-row">
+                          <span>Map Style</span>
+                          <span class="mini-pill">Hybrid</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="screenshot-label-row">
+                    <span class="screenshot-label">Custom Stamp Settings</span>
+                    <label class="btn-upload-badge" for="uploadInput2" title="Upload custom screenshot for Slot 2">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                      <span>Upload</span>
+                    </label>
+                    <input type="file" id="uploadInput2" accept="image/*" class="screenshot-file-input" style="display: none;" />
+                  </div>
+                </div>
+
+                <!-- Screenshot 3 -->
+                <div class="screenshot-card">
+                  <div class="screenshot-device" id="deviceDrop3" data-screenshot-index="3">
+                    <div class="screenshot-notch"></div>
+                    <img id="screenshotImg3" class="screenshot-user-img" src="assets/screenshot3.png" alt="GPS Camera App Screenshot 3" style="display: none;" />
+                    <div class="screenshot-screen screenshot-screen-gallery" id="screenshotMock3">
+                      <div class="screenshot-header-bar">
+                        <span>Saved Photos</span>
+                      </div>
+                      <div class="screenshot-gallery-grid">
+                        <div class="gallery-item item-1">
+                          <span class="item-tag">Site Visit</span>
+                        </div>
+                        <div class="gallery-item item-2">
+                          <span class="item-tag">Field Work</span>
+                        </div>
+                        <div class="gallery-item item-3">
+                          <span class="item-tag">Survey</span>
+                        </div>
+                        <div class="gallery-item item-4">
+                          <span class="item-tag">Travel</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="screenshot-label-row">
+                    <span class="screenshot-label">Location Photo Gallery</span>
+                    <label class="btn-upload-badge" for="uploadInput3" title="Upload custom screenshot for Slot 3">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                      <span>Upload</span>
+                    </label>
+                    <input type="file" id="uploadInput3" accept="image/*" class="screenshot-file-input" style="display: none;" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div>
