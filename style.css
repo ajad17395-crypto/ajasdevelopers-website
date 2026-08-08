@@ -1043,6 +1043,114 @@ img, svg {
   margin: 0 auto;
 }
 
+/* Developer Profile Cards */
+.developers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.25rem;
+}
+
+@media (max-width: 640px) {
+  .developers-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.developer-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.developer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent-blue);
+  opacity: 0.8;
+  border-top-left-radius: var(--radius-md);
+  border-bottom-left-radius: var(--radius-md);
+  transition: opacity var(--transition-fast), width var(--transition-fast);
+}
+
+.developer-card:hover {
+  transform: translateY(-3px);
+  border-color: #BFDBFE;
+  box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.12);
+}
+
+.developer-card:hover::before {
+  width: 6px;
+  opacity: 1;
+}
+
+.developer-avatar {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+  border: 2px solid #BFDBFE;
+  color: var(--accent-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.developer-card:hover .developer-avatar {
+  transform: scale(1.05);
+}
+
+.developer-initial {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  background: var(--accent-blue);
+  color: #FFFFFF;
+  font-size: 0.625rem;
+  font-weight: 800;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #FFFFFF;
+}
+
+.developer-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.developer-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.2rem;
+}
+
+.developer-role {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent-blue);
+}
+
 .about-features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
