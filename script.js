@@ -99,4 +99,140 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
   }
+
+  // App Screenshots Manager (Uploads, Drag & Drop, Local Storage, Asset Fallbacks)
+  const resetBtn = document.getElementById('resetScreenshotsBtn');
+
+  const screenshotSlots = [1, 2, 3];
+
+  function updateResetButtonVisibility() {
+    let hasCustom = false;
+    screenshotSlots.forEach(index => {
+      if (localStorage.getItem(`ajas_app_screenshot_${index}`)) {
+        hasCustom = true;
+      }
+    });
+    if (resetBtn) {
+      resetBtn.style.display = hasCustom ? 'inline-flex' : 'none';
+    }
+  }
+
+  function setScreenshotImage(index, dataUrl) {
+    const img = document.getElementById(`screenshotImg${index}`);
+    const mock = document.getElementById(`screenshotMock${index}`);
+
+    if (img) {
+      img.src = dataUrl;
+      img.style.display = 'block';
+    }
+    if (mock) {
+      mock.style.display = 'none';
+    }
+
+    try {
+      localStorage.setItem(`ajas_app_screenshot_${index}`, dataUrl);
+    } catch (e) {
+      console.warn('Could not save screenshot to localStorage:', e);
+    }
+
+    updateResetButtonVisibility();
+  }
+
+  screenshotSlots.forEach(index => {
+    const fileInput = document.getElementById(`uploadInput${index}`);
+    const device = document.getElementById(`deviceDrop${index}`);
+    const img = document.getElementById(`screenshotImg${index}`);
+    const mock = document.getElementById(`screenshotMock${index}`);
+
+    // 1. Check LocalStorage first
+    const saved = localStorage.getItem(`ajas_app_screenshot_${index}`);
+    if (saved) {
+      setScreenshotImage(index, saved);
+    } else if (img) {
+      // 2. Check if default assets image exists
+      img.onload = () => {
+        img.style.display = 'block';
+        if (mock) mock.style.display = 'none';
+      };
+      img.onerror = () => {
+        img.style.display = 'none';
+        if (mock) mock.style.display = 'flex';
+      };
+    }
+
+    // File Input change
+    if (fileInput) {
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            if (event.target && event.target.result) {
+              setScreenshotImage(index, event.target.result);
+            }
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    }
+
+    // Drag and drop handlers
+    if (device) {
+      ['dragenter', 'dragover'].forEach(eventName => {
+        device.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          device.classList.add('drag-over');
+        }, false);
+      });
+
+      ['dragleave', 'drop'].forEach(eventName => {
+        device.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          device.classList.remove('drag-over');
+        }, false);
+      });
+
+      device.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const files = dt && dt.files;
+        if (files && files.length > 0) {
+          const file = files[0];
+          if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+              if (event.target && event.target.result) {
+                setScreenshotImage(index, event.target.result);
+              }
+            };
+            reader.readAsDataURL(file);
+          }
+        }
+      });
+    }
+  });
+
+  // Reset button
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      screenshotSlots.forEach(index => {
+        localStorage.removeItem(`ajas_app_screenshot_${index}`);
+        const img = document.getElementById(`screenshotImg${index}`);
+        const mock = document.getElementById(`screenshotMock${index}`);
+        const fileInput = document.getElementById(`uploadInput${index}`);
+        
+        if (fileInput) fileInput.value = '';
+        if (img) {
+          img.src = `assets/screenshot${index}.png`;
+          // Let error handler reset back to mock if file doesn't exist
+          img.onerror = () => {
+            img.style.display = 'none';
+            if (mock) mock.style.display = 'flex';
+          };
+        }
+      });
+      resetBtn.style.display = 'none';
+    });
+  }
 });
