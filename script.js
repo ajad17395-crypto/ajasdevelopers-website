@@ -99,30 +99,4 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
   }
-
-  // App Screenshots Asset Fallback Handling
-  [1, 2, 3].forEach(index => {
-    const img = document.getElementById(`screenshotImg${index}`);
-    const mock = document.getElementById(`screenshotMock${index}`);
-
-    if (img) {
-      img.onload = () => {
-        img.style.display = 'block';
-        if (mock) mock.style.display = 'none';
-      };
-      img.onerror = () => {
-        img.style.display = 'none';
-        if (mock) mock.style.display = 'flex';
-      };
-
-      // Trigger load status check for cached or already loaded assets
-      if (img.complete) {
-        if (img.naturalWidth > 0) {
-          img.onload();
-        } else {
-          img.onerror();
-        }
-      }
-    }
-  });
 });
