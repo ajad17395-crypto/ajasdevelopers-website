@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GPS Map Camera Photo &amp; Video | AJAS Developers</title>
+  
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Theme Flash Prevention -->
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('ajas_theme');
+        if (saved) {
+          document.documentElement.setAttribute('data-theme', saved);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Capture photos and videos with real-time GPS location coordinates, reverse-geocoded address, altitude, and timestamps stamped directly onto your media." />
+  <meta name="author" content="AJAS Developers" />
+  <link rel="canonical" href="https://ajasdevelopers.in/gps-map-camera.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="GPS Map Camera Photo &amp; Video - Android App | AJAS Developers" />
+  <meta property="og:description" content="Capture photos and videos with real-time GPS location coordinates, reverse-geocoded address, altitude, and timestamps stamped directly onto your media." />
+  <meta property="og:url" content="https://ajasdevelopers.in/gps-map-camera.html" />
+  <meta property="og:site_name" content="AJAS Developers" />
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="GPS Map Camera Photo &amp; Video | AJAS Developers" />
+  <meta name="twitter:description" content="Capture photos and videos with real-time GPS location coordinates, reverse-geocoded address, and timestamps stamped directly onto your media." />
+
+  <!-- Structured Data / JSON-LD -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GPS Map Camera Photo & Video",
+      "operatingSystem": "Android",
+      "applicationCategory": "PhotoApplication",
+      "description": "Capture photos and videos with real-time GPS location coordinates, reverse-geocoded address, altitude, and timestamps stamped directly onto your media.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "AJAS Developers",
+        "url": "https://ajasdevelopers.in/"
+      },
+      "url": "https://play.google.com/store/apps/details?id=com.aistudio.gpscamera.vjqmks"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ajasdevelopers.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Applications",
+          "item": "https://ajasdevelopers.in/#apps"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "GPS Map Camera Photo & Video",
+          "item": "https://ajasdevelopers.in/gps-map-camera.html"
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- JavaScript -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Skip to main content -->
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html#home" class="nav-brand" aria-label="AJAS Developers Homepage">
+        <div class="brand-icon-wrapper">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+            <polyline points="2 17 12 22 22 17"/>
+            <polyline points="2 12 12 17 22 12"/>
+          </svg>
+        </div>
+        <div class="brand-text-wrap">
+          <span class="brand-title">AJAS Developers</span>
+          <span class="brand-subtitle">Software Studio</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html#home" class="nav-link">Home</a></li>
+        <li><a href="index.html#apps" class="nav-link active">Apps</a></li>
+        <li><a href="index.html#about" class="nav-link">About</a></li>
+        <li><a href="index.html#values" class="nav-link">Principles</a></li>
+        <li><a href="index.html#support" class="nav-link">Support</a></li>
+        <li><a href="privacy-policy.html" class="nav-link">Privacy</a></li>
+        <li><a href="disclaimer.html" class="nav-link">Disclaimer</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle color theme" title="Toggle theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <a href="https://play.google.com/store/apps/details?id=com.aistudio.gpscamera.vjqmks" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm nav-cta-btn">
+          <span>Get on Play Store</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="mainContent">
+    
+    <!-- Breadcrumb -->
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="index.html" class="breadcrumb-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="breadcrumb-sep" aria-hidden="true">&rsaquo;</li>
+          <li class="breadcrumb-item">
+            <a href="index.html#apps" class="breadcrumb-link">Apps</a>
+          </li>
+          <li class="breadcrumb-sep" aria-hidden="true">&rsaquo;</li>
+          <li class="breadcrumb-item">
+            <span class="breadcrumb-current" aria-current="page">GPS Map Camera</span>
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- App Product Hero -->
+    <header class="app-product-hero">
+      <div class="container">
+        <div class="app-hero-grid">
+          
+          <!-- Hero Left Column -->
+          <div class="app-hero-info">
+            <div class="app-hero-header-row">
+              <div class="app-hero-icon-box icon-camera">
+                <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                  <circle cx="12" cy="13" r="4"/>
+                </svg>
+              </div>
+
+              <div class="app-hero-meta-col">
+                <span class="app-hero-category">Camera &amp; Documentation</span>
+                <div class="app-hero-badges">
+                  <span class="app-status-badge status-live">
+                    <span class="status-dot"></span>
+                    <span>Available on Google Play</span>
+                  </span>
+                  <span class="hero-badge">Native Android</span>
+                </div>
+              </div>
+            </div>
+
+            <h1 class="app-hero-title">GPS Map Camera Photo &amp; Video</h1>
+            
+            <p class="app-hero-tagline">
+              Capture high-resolution photos and videos with real-time GPS location coordinates, reverse-geocoded address, altitude, and timestamp stamped directly onto your media.
+            </p>
+
+            <div class="app-hero-chips">
+              <span class="feature-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Live GPS Geotag</span>
+              </span>
+              <span class="feature-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <span>Date &amp; Timestamp</span>
+              </span>
+              <span class="feature-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
+                <span>Map Stamp</span>
+              </span>
+              <span class="feature-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Photo &amp; Video</span>
+              </span>
+              <span class="feature-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Privacy-Safe</span>
+              </span>
+            </div>
+
+            <div class="app-hero-ctas">
+              <a href="https://play.google.com/store/apps/details?id=com.aistudio.gpscamera.vjqmks" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-playstore-large" aria-label="Get GPS Map Camera on Google Play">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L18.81,13.97C20.15,13.2 20.15,12.03 18.81,11.26L16.81,10.11L14.81,12.12L16.81,15.12M13.69,12L4.5,2.81L15.39,9.1L13.69,12M13.69,12L15.39,14.9L4.5,21.19L13.69,12Z"/>
+                </svg>
+                <span>Get it on Google Play</span>
+              </a>
+
+              <a href="#features" class="btn btn-secondary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                <span>Explore Features</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Right Column: Clean App Overview & Capability Card -->
+          <div class="app-hero-visual" aria-label="GPS Map Camera App Overview">
+            <div class="app-showcase-card-clean">
+              <div class="app-showcase-header-clean">
+                <div class="app-clean-icon icon-camera">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                    <circle cx="12" cy="13" r="4"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="app-clean-title">GPS Map Camera</div>
+                  <div class="app-clean-sub">AJAS Developers &bull; Android Native</div>
+                </div>
+                <span class="showcase-pill-live" style="margin-left: auto;">Available</span>
+              </div>
+
+              <div class="app-clean-specs-list">
+                <div class="app-clean-spec-row">
+                  <span class="spec-bullet-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <div class="spec-row-text">
+                    <strong>Real-Time Coordinate Imprinting</strong>
+                    <span>Live latitude, longitude, and elevation calculation</span>
+                  </div>
+                </div>
+
+                <div class="app-clean-spec-row">
+                  <span class="spec-bullet-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <div class="spec-row-text">
+                    <strong>Reverse-Geocoded Address</strong>
+                    <span>Instant automatic city, state, and street name resolution</span>
+                  </div>
+                </div>
+
+                <div class="app-clean-spec-row">
+                  <span class="spec-bullet-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <div class="spec-row-text">
+                    <strong>Photo &amp; Video Recording</strong>
+                    <span>High-definition media with synchronized temporal stamps</span>
+                  </div>
+                </div>
+
+                <div class="app-clean-spec-row">
+                  <span class="spec-bullet-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <div class="spec-row-text">
+                    <strong>100% On-Device Processing</strong>
+                    <span>Zero cloud uploads or background data tracking</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="app-clean-footer">
+                <span class="app-clean-package">com.aistudio.gpscamera.vjqmks</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- App Technical Specs Bar -->
+    <div class="container">
+      <div class="app-specs-bar">
+        <div class="spec-item">
+          <div class="spec-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <div class="spec-meta">
+            <span class="spec-label">Platform</span>
+            <span class="spec-value">Android Native</span>
+          </div>
+        </div>
+
+        <div class="spec-item">
+          <div class="spec-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="spec-meta">
+            <span class="spec-label">Pricing</span>
+            <span class="spec-value">Free &bull; Ad-Supported</span>
+          </div>
+        </div>
+
+        <div class="spec-item">
+          <div class="spec-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="spec-meta">
+            <span class="spec-label">Data Privacy</span>
+            <span class="spec-value">100% On-Device</span>
+          </div>
+        </div>
+
+        <div class="spec-item">
+          <div class="spec-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="spec-meta">
+            <span class="spec-label">Modes</span>
+            <span class="spec-value">Photo &amp; Video</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Features Grid -->
+    <section class="section app-features-section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>CORE CAPABILITIES</span>
+          </div>
+          <h2 class="section-title">Engineered for Clear Documentation</h2>
+          <p class="section-desc">Everything you need to capture verifiable visual records stamped with high-accuracy spatial and temporal data.</p>
+        </div>
+
+        <div class="product-features-grid">
+          <!-- Feature 1 -->
+          <div class="product-feature-card">
+            <div class="feature-card-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3 class="feature-card-title">Real-Time GPS Coordinates</h3>
+            <p class="feature-card-desc">Automatically reads device location hardware to imprint accurate latitude, longitude, and elevation onto every frame with sub-second precision.</p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="product-feature-card">
+            <div class="feature-card-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            </div>
+            <h3 class="feature-card-title">Reverse-Geocoded Address</h3>
+            <p class="feature-card-desc">Converts raw geographical coordinates into human-readable street names, neighborhood, city, state, and country stamps.</p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="product-feature-card">
+            <div class="feature-card-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3 class="feature-card-title">Date &amp; Time Stamping</h3>
+            <p class="feature-card-desc">Imprints exact timestamps in multiple standard formats, providing indisputable temporal evidence for field logs and project verification.</p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="product-feature-card">
+            <div class="feature-card-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
+            </div>
+            <h3 class="feature-card-title">Map Stamp Overlay</h3>
+            <p class="feature-card-desc">Embeds a clear visual mini-map badge directly in the corner of your photo or video so viewers immediately understand the geographical context.</p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div class="product-feature-card">
+            <div class="feature-card-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            </div>
+            <h3 class="feature-card-title">Photo &amp; Video Recording</h3>
+            <p class="feature-card-desc">Seamlessly switch between high-resolution still photography and smooth video recording without losing stamp synchronization or clarity.</p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="product-feature-card">
+            <div class="feature-card-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="feature-card-title">Direct Local Storage</h3>
+            <p class="feature-card-desc">Photos and videos remain 100% on your device. We do not upload, analyze, or synchronize your private media to any remote servers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Real-World Use Cases -->
+    <section class="section app-usecases-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+            <span>APPLICATIONS IN PRACTICE</span>
+          </div>
+          <h2 class="section-title">Built for Professionals &amp; Everyday Users</h2>
+          <p class="section-desc">Reliable geotagging trusted across diverse industries and daily activities.</p>
+        </div>
+
+        <div class="usecases-grid">
+          <div class="usecase-card">
+            <h3 class="usecase-title">Site &amp; Construction Inspection</h3>
+            <p class="usecase-desc">Document structural progress, safety compliance, and engineering milestones with undeniable coordinate and timestamp stamps.</p>
+          </div>
+
+          <div class="usecase-card">
+            <h3 class="usecase-title">Real Estate &amp; Land Surveying</h3>
+            <p class="usecase-desc">Produce verifiable property records with precise boundary coordinates, street addresses, and time references.</p>
+          </div>
+
+          <div class="usecase-card">
+            <h3 class="usecase-title">Travel &amp; Outdoor Exploration</h3>
+            <p class="usecase-desc">Preserve hiking memories, scenic viewpoints, and off-grid discoveries with permanent elevation and coordinate markers.</p>
+          </div>
+
+          <div class="usecase-card">
+            <h3 class="usecase-title">Field Logistics &amp; Delivery</h3>
+            <p class="usecase-desc">Verify deliveries, service installations, and asset tracking with instant geotagged photo proof.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy & Data Handling Section -->
+    <section class="section app-privacy-section">
+      <div class="container">
+        <div class="app-privacy-card">
+          <div class="privacy-card-info">
+            <div class="section-tag" style="margin-bottom: 0.75rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>PRIVACY FIRST</span>
+            </div>
+            <h3>Your Location &amp; Media Stay on Your Device</h3>
+            <p>
+              GPS Map Camera uses your camera and location sensors strictly during active use to generate coordinates and reverse-geocode addresses. We do not track your location in the background, nor do we store or transmit your media to cloud servers.
+            </p>
+            <a href="privacy-policy.html" class="btn btn-secondary">
+              <span>Read Full Privacy Policy</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <ul class="privacy-checklist">
+            <li class="privacy-check-item">
+              <span class="privacy-check-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span><strong>Camera Permission:</strong> Used exclusively to preview and capture photos/videos.</span>
+            </li>
+            <li class="privacy-check-item">
+              <span class="privacy-check-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span><strong>Location Permission:</strong> Used solely in foreground to fetch coordinates for stamp.</span>
+            </li>
+            <li class="privacy-check-item">
+              <span class="privacy-check-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span><strong>Local Storage:</strong> Captured media is saved directly to your device gallery.</span>
+            </li>
+            <li class="privacy-check-item">
+              <span class="privacy-check-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span><strong>Zero Telemetry:</strong> No analytics trackers or user profiling.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Google Play Download Banner -->
+    <div class="container">
+      <div class="app-download-banner">
+        <h2 class="download-banner-title">Download GPS Map Camera Today</h2>
+        <p class="download-banner-desc">
+          Available for Android devices on Google Play. Start stamping real-time coordinates, addresses, and timestamps on your media in seconds.
+        </p>
+        <div class="download-banner-actions">
+          <a href="https://play.google.com/store/apps/details?id=com.aistudio.gpscamera.vjqmks" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-playstore-large" aria-label="Get GPS Map Camera on Google Play">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L18.81,13.97C20.15,13.2 20.15,12.03 18.81,11.26L16.81,10.11L14.81,12.12L16.81,15.12M13.69,12L4.5,2.81L15.39,9.1L13.69,12M13.69,12L15.39,14.9L4.5,21.19L13.69,12Z"/>
+            </svg>
+            <span>Get it on Google Play</span>
+          </a>
+          <a href="https://play.google.com/store/apps/developer?id=AJAS+Developers" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            <span>View All Studio Apps</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Studio Navigation & Support Section -->
+    <section class="section related-apps-section">
+      <div class="container">
+        <!-- Support CTA Box -->
+        <div class="app-support-box">
+          <div class="app-support-text">
+            <h4>Need assistance with GPS Map Camera?</h4>
+            <p>Have questions, feedback, or a feature request? Reach out directly to the studio development team.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <a href="index.html#apps" class="btn btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              <span>Back to Selected Apps</span>
+            </a>
+            <a href="mailto:iajadpatel@gmail.com?subject=GPS%20Map%20Camera%20Support" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Contact Developer</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Premium Multi-Column Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Studio Brand & Identity -->
+        <div class="footer-col footer-col-brand">
+          <a href="index.html#home" class="footer-brand-link" aria-label="AJAS Developers Home">
+            <div class="brand-icon-wrapper">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                <polyline points="2 17 12 22 22 17"/>
+                <polyline points="2 12 12 17 22 12"/>
+              </svg>
+            </div>
+            <div class="brand-text-wrap">
+              <span class="brand-title">AJAS Developers</span>
+              <span class="brand-subtitle">Software Studio</span>
+            </div>
+          </a>
+
+          <p class="footer-brand-desc">
+            Independent Android software studio founded by Ajad &amp; Ashu. Creating simple, practical, and reliable mobile applications designed to solve everyday needs.
+          </p>
+
+          <div class="footer-badge-wrap">
+            <div class="developer-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Verified Google Play Developer</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Applications Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Applications</h4>
+          <ul class="footer-links-list">
+            <li>
+              <a href="gps-map-camera.html" class="footer-link">
+                <span>GPS Map Camera</span>
+                <span class="footer-link-tag">Live</span>
+              </a>
+            </li>
+            <li>
+              <a href="qr-barcode-pro.html" class="footer-link">
+                <span>QR &amp; Barcode Pro</span>
+                <span class="footer-link-tag">Live</span>
+              </a>
+            </li>
+            <li>
+              <a href="arrow-escape.html" class="footer-link">
+                <span>Arrow Escape: Maze Puzzle</span>
+                <span class="footer-link-tag tag-soon">Coming Soon</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://play.google.com/store/apps/developer?id=AJAS+Developers" target="_blank" rel="noopener noreferrer" class="footer-link footer-link-ext">
+                <span>Google Play Catalog</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Studio Navigation Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Studio</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html#home" class="footer-link">Home Overview</a></li>
+            <li><a href="index.html#apps" class="footer-link">Featured Apps</a></li>
+            <li><a href="index.html#about" class="footer-link">About Founders</a></li>
+            <li><a href="index.html#values" class="footer-link">Development Philosophy</a></li>
+            <li><a href="index.html#trust" class="footer-link">Trust &amp; Quality</a></li>
+            <li><a href="index.html#support" class="footer-link">Support &amp; Inquiries</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Legal & Compliance Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Legal &amp; Safety</h4>
+          <ul class="footer-links-list">
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+            <li><a href="disclaimer.html" class="footer-link">App Disclaimer</a></li>
+            <li><a href="ads.txt" target="_blank" class="footer-link">Ad Transparency (ads.txt)</a></li>
+            <li><a href="mailto:iajadpatel@gmail.com" class="footer-link">Developer Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copyright">
+          &copy; <span id="currentYear">2026</span> AJAS Developers. All rights reserved.
+        </div>
+
+        <div class="footer-bottom-meta">
+          <span>Official Android Software Studio</span>
+          <span class="footer-dot-sep">&bull;</span>
+          <span>Founded by Ajad &amp; Ashu</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
