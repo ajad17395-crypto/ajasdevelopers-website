@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arrow Escape: Maze Puzzle | AJAS Developers</title>
+  
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Theme Flash Prevention -->
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('ajas_theme');
+        if (saved) {
+          document.documentElement.setAttribute('data-theme', saved);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="An engaging, minimalist logic puzzle game for Android. Navigate directional arrow grids, untangle challenging pathways, and guide arrows to freedom." />
+  <meta name="author" content="AJAS Developers" />
+  <link rel="canonical" href="https://ajasdevelopers.in/arrow-escape.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Arrow Escape: Maze Puzzle - Android Game | AJAS Developers" />
+  <meta property="og:description" content="An engaging, minimalist logic puzzle game for Android. Navigate directional arrow grids and untangle challenging mazes." />
+  <meta property="og:url" content="https://ajasdevelopers.in/arrow-escape.html" />
+  <meta property="og:site_name" content="AJAS Developers" />
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Arrow Escape: Maze Puzzle | AJAS Developers" />
+  <meta name="twitter:description" content="An engaging, minimalist logic puzzle game for Android by AJAS Developers." />
+
+  <!-- Structured Data / JSON-LD -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Arrow Escape: Maze Puzzle",
+      "operatingSystem": "Android",
+      "applicationCategory": "GameApplication",
+      "description": "An engaging, minimalist logic puzzle game for Android. Navigate directional arrow grids, untangle challenging pathways, and guide arrows to freedom through progressively crafted brain-teaser levels.",
+      "author": {
+        "@type": "Organization",
+        "name": "AJAS Developers",
+        "url": "https://ajasdevelopers.in/"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ajasdevelopers.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Applications",
+          "item": "https://ajasdevelopers.in/#apps"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Arrow Escape",
+          "item": "https://ajasdevelopers.in/arrow-escape.html"
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- JavaScript -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Skip to main content -->
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html#home" class="nav-brand" aria-label="AJAS Developers Homepage">
+        <div class="brand-icon-wrapper">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+            <polyline points="2 17 12 22 22 17"/>
+            <polyline points="2 12 12 17 22 12"/>
+          </svg>
+        </div>
+        <div class="brand-text-wrap">
+          <span class="brand-title">AJAS Developers</span>
+          <span class="brand-subtitle">Software Studio</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html#home" class="nav-link">Home</a></li>
+        <li><a href="index.html#apps" class="nav-link active">Apps</a></li>
+        <li><a href="index.html#about" class="nav-link">About</a></li>
+        <li><a href="index.html#values" class="nav-link">Principles</a></li>
+        <li><a href="index.html#support" class="nav-link">Support</a></li>
+        <li><a href="privacy-policy.html" class="nav-link">Privacy</a></li>
+        <li><a href="disclaimer.html" class="nav-link">Disclaimer</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle color theme" title="Toggle theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <a href="index.html#apps" class="btn btn-primary btn-sm nav-cta-btn">
+          <span>Explore Apps</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="mainContent">
+    
+    <!-- Breadcrumb -->
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="index.html" class="breadcrumb-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="breadcrumb-sep" aria-hidden="true">&rsaquo;</li>
+          <li class="breadcrumb-item">
+            <a href="index.html#apps" class="breadcrumb-link">Apps</a>
+          </li>
+          <li class="breadcrumb-sep" aria-hidden="true">&rsaquo;</li>
+          <li class="breadcrumb-item">
+            <span class="breadcrumb-current" aria-current="page">Arrow Escape</span>
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- App Product Hero -->
+    <header class="app-product-hero">
+      <div class="container">
+        <div class="app-hero-grid">
+          
+          <!-- Hero Left Column -->
+          <div class="app-hero-info">
+            <div class="app-hero-header-row">
+              <div class="app-hero-icon-box icon-game">
+                <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                  <circle cx="6" cy="12" r="2" fill="currentColor"></circle>
+                </svg>
+              </div>
+
+              <div class="app-hero-meta-col">
+                <span class="app-hero-category" style="color: #8B5CF6;">Logic &amp; Puzzle Game</span>
+                <div class="app-hero-badges">
+                  <span class="app-status-badge status-upcoming">
+                    <span class="status-dot-amber"></span>
+                    <span>In Active Development</span>
+                  </span>
+                  <span class="hero-badge">Upcoming Android Game</span>
+                </div>
+              </div>
+            </div>
+
+            <h1 class="app-hero-title">Arrow Escape: Maze Puzzle</h1>
+            
+            <p class="app-hero-tagline">
+              An engaging, minimalist logic puzzle game for Android. Navigate directional arrow grids, untangle challenging pathways, and guide arrows to freedom through progressively crafted brain-teaser levels.
+            </p>
+
+            <div class="app-hero-chips">
+              <span class="feature-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <span>Directional Grids</span>
+              </span>
+              <span class="feature-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <span>Spatial Logic</span>
+              </span>
+              <span class="feature-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span>Hand-Crafted Levels</span>
+              </span>
+              <span class="feature-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+                <span>100% Offline</span>
+              </span>
+              <span class="feature-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                <span>Relaxing Gameplay</span>
+              </span>
+            </div>
+
+            <div class="app-hero-ctas">
+              <span class="btn btn-secondary" style="cursor: default; opacity: 0.9;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                <span>Coming Soon to Google Play</span>
+              </span>
+
+              <a href="#concept" class="btn btn-primary">
+                <span>Explore Gameplay Concept</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Right Column: Minimalist Arrow Maze Showcase -->
+          <div class="app-hero-visual" aria-label="Arrow Escape Gameplay Mockup">
+            <div class="app-showcase-window">
+              <div class="showcase-window-bar">
+                <div class="window-dots">
+                  <span class="window-dot dot-red"></span>
+                  <span class="window-dot dot-amber"></span>
+                  <span class="window-dot dot-green"></span>
+                </div>
+                <span class="window-title-text">Arrow Grid Prototype</span>
+                <span class="showcase-pill-upcoming" style="padding: 2px 8px; font-size: 0.7rem;">In Dev</span>
+              </div>
+
+              <div class="showcase-window-screen">
+                <div class="game-screen-mock">
+                  <div class="puzzle-grid-visual">
+                    <!-- Row 1 -->
+                    <div class="puzzle-cell">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                    <div class="puzzle-cell cell-active">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+                    </div>
+                    <div class="puzzle-cell">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    </div>
+                    <div class="puzzle-cell">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="puzzle-cell">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+                    </div>
+                    <div class="puzzle-cell">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                    <div class="puzzle-cell cell-active">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                    <div class="puzzle-cell">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="puzzle-cell cell-active">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    </div>
+                    <div class="puzzle-cell">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="puzzle-cell">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+                    </div>
+                    <div class="puzzle-cell cell-active">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="puzzle-cell">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                    <div class="puzzle-cell cell-active">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    </div>
+                    <div class="puzzle-cell">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="puzzle-cell">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                  </div>
+
+                  <span class="showcase-pill-upcoming" style="padding: 0.35rem 0.95rem; font-size: 0.8125rem;">
+                    <span>Untangle Path &bull; Guide Arrows Out</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- App Technical Specs Bar -->
+    <div class="container">
+      <div class="app-specs-bar">
+        <div class="spec-item">
+          <div class="spec-icon" style="color: #8B5CF6;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <div class="spec-meta">
+            <span class="spec-label">Platform</span>
+            <span class="spec-value">Android Native</span>
+          </div>
+        </div>
+
+        <div class="spec-item">
+          <div class="spec-icon" style="color: #8B5CF6;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+          </div>
+          <div class="spec-meta">
+            <span class="spec-label">Status</span>
+            <span class="spec-value">In Development</span>
+          </div>
+        </div>
+
+        <div class="spec-item">
+          <div class="spec-icon" style="color: #8B5CF6;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+          </div>
+          <div class="spec-meta">
+            <span class="spec-label">Connectivity</span>
+            <span class="spec-value">100% Offline</span>
+          </div>
+        </div>
+
+        <div class="spec-item">
+          <div class="spec-icon" style="color: #8B5CF6;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="spec-meta">
+            <span class="spec-label">Genre</span>
+            <span class="spec-value">Spatial Puzzle</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Features Grid -->
+    <section class="section app-features-section" id="concept">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>GAMEPLAY DESIGN</span>
+          </div>
+          <h2 class="section-title">Designed for Mindful Focus</h2>
+          <p class="section-desc">A thoughtful blend of minimalist aesthetics, logical deduction, and calming interactions.</p>
+        </div>
+
+        <div class="product-features-grid">
+          <!-- Feature 1 -->
+          <div class="product-feature-card">
+            <div class="feature-card-icon-wrap" style="color: #8B5CF6;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+            <h3 class="feature-card-title">Directional Arrow Mechanics</h3>
+            <p class="feature-card-desc">Every arrow moves strictly in its designated vector. Determine the exact sequence to release locked arrows without collisions.</p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="product-feature-card">
+            <div class="feature-card-icon-wrap" style="color: #8B5CF6;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h3 class="feature-card-title">Progressive Complexity</h3>
+            <p class="feature-card-desc">Gradually evolves from straightforward introductory grids to multi-layered labyrinth puzzles requiring spatial anticipation.</p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="product-feature-card">
+            <div class="feature-card-icon-wrap" style="color: #8B5CF6;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h3 class="feature-card-title">Hand-Crafted Levels</h3>
+            <p class="feature-card-desc">Each stage is deliberately designed to stimulate cognitive pattern recognition rather than relying on randomized algorithms.</p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="product-feature-card">
+            <div class="feature-card-icon-wrap" style="color: #8B5CF6;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+            </div>
+            <h3 class="feature-card-title">100% Offline Play</h3>
+            <p class="feature-card-desc">Enjoy full gameplay anytime, anywhere without requiring cellular data, Wi-Fi connectivity, or account registrations.</p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div class="product-feature-card">
+            <div class="feature-card-icon-wrap" style="color: #8B5CF6;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+            </div>
+            <h3 class="feature-card-title">No Timers or Stress</h3>
+            <p class="feature-card-desc">Solve puzzles at your own comfortable pace without aggressive countdown clocks, artificial energy limits, or forced rushes.</p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="product-feature-card">
+            <div class="feature-card-icon-wrap" style="color: #8B5CF6;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="feature-card-title">Clean Privacy Standards</h3>
+            <p class="feature-card-desc">Adheres strictly to AJAS Developers core principles: zero invasive tracking, minimal footprint, and respect for user focus.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Development Status & Studio Transparency -->
+    <section class="section app-privacy-section">
+      <div class="container">
+        <div class="app-privacy-card">
+          <div class="privacy-card-info">
+            <div class="section-tag" style="margin-bottom: 0.75rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+              <span>DEVELOPMENT STATUS</span>
+            </div>
+            <h3>Active Prototyping &amp; Level Engineering</h3>
+            <p>
+              Arrow Escape is currently in active gameplay prototyping by studio co-founders Ajad &amp; Ashu. We are refining grid interactions, testing fluid tactile animations, and crafting balanced puzzle curves for the upcoming Google Play release.
+            </p>
+            <a href="index.html#apps" class="btn btn-secondary">
+              <span>View Published Apps</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <ul class="privacy-checklist">
+            <li class="privacy-check-item">
+              <span class="privacy-check-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span><strong>Phase 1: Core Physics &amp; Vector Logic:</strong> Completed and verified.</span>
+            </li>
+            <li class="privacy-check-item">
+              <span class="privacy-check-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span><strong>Phase 2: Level Progression &amp; Puzzles:</strong> In active development.</span>
+            </li>
+            <li class="privacy-check-item">
+              <span class="privacy-check-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span><strong>Phase 3: Sound Design &amp; Haptics:</strong> Planned.</span>
+            </li>
+            <li class="privacy-check-item">
+              <span class="privacy-check-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span><strong>Phase 4: Google Play Release:</strong> Upcoming.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Studio Navigation & Support Section -->
+    <section class="section related-apps-section">
+      <div class="container">
+        <!-- Support CTA Box -->
+        <div class="app-support-box">
+          <div class="app-support-text">
+            <h4>Have suggestions for Arrow Escape?</h4>
+            <p>We welcome puzzle mechanics feedback, beta tester inquiries, and level design suggestions.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <a href="index.html#apps" class="btn btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              <span>Back to Selected Apps</span>
+            </a>
+            <a href="mailto:iajadpatel@gmail.com?subject=Arrow%20Escape%20Feedback" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Contact Studio</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Premium Multi-Column Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Studio Brand & Identity -->
+        <div class="footer-col footer-col-brand">
+          <a href="index.html#home" class="footer-brand-link" aria-label="AJAS Developers Home">
+            <div class="brand-icon-wrapper">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                <polyline points="2 17 12 22 22 17"/>
+                <polyline points="2 12 12 17 22 12"/>
+              </svg>
+            </div>
+            <div class="brand-text-wrap">
+              <span class="brand-title">AJAS Developers</span>
+              <span class="brand-subtitle">Software Studio</span>
+            </div>
+          </a>
+
+          <p class="footer-brand-desc">
+            Independent Android software studio founded by Ajad &amp; Ashu. Creating simple, practical, and reliable mobile applications designed to solve everyday needs.
+          </p>
+
+          <div class="footer-badge-wrap">
+            <div class="developer-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Verified Google Play Developer</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Applications Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Applications</h4>
+          <ul class="footer-links-list">
+            <li>
+              <a href="gps-map-camera.html" class="footer-link">
+                <span>GPS Map Camera</span>
+                <span class="footer-link-tag">Live</span>
+              </a>
+            </li>
+            <li>
+              <a href="qr-barcode-pro.html" class="footer-link">
+                <span>QR &amp; Barcode Pro</span>
+                <span class="footer-link-tag">Live</span>
+              </a>
+            </li>
+            <li>
+              <a href="arrow-escape.html" class="footer-link">
+                <span>Arrow Escape: Maze Puzzle</span>
+                <span class="footer-link-tag tag-soon">Coming Soon</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://play.google.com/store/apps/developer?id=AJAS+Developers" target="_blank" rel="noopener noreferrer" class="footer-link footer-link-ext">
+                <span>Google Play Catalog</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Studio Navigation Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Studio</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html#home" class="footer-link">Home Overview</a></li>
+            <li><a href="index.html#apps" class="footer-link">Featured Apps</a></li>
+            <li><a href="index.html#about" class="footer-link">About Founders</a></li>
+            <li><a href="index.html#values" class="footer-link">Development Philosophy</a></li>
+            <li><a href="index.html#trust" class="footer-link">Trust &amp; Quality</a></li>
+            <li><a href="index.html#support" class="footer-link">Support &amp; Inquiries</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Legal & Compliance Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Legal &amp; Safety</h4>
+          <ul class="footer-links-list">
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+            <li><a href="disclaimer.html" class="footer-link">App Disclaimer</a></li>
+            <li><a href="ads.txt" target="_blank" class="footer-link">Ad Transparency (ads.txt)</a></li>
+            <li><a href="mailto:iajadpatel@gmail.com" class="footer-link">Developer Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copyright">
+          &copy; <span id="currentYear">2026</span> AJAS Developers. All rights reserved.
+        </div>
+
+        <div class="footer-bottom-meta">
+          <span>Official Android Software Studio</span>
+          <span class="footer-dot-sep">&bull;</span>
+          <span>Founded by Ajad &amp; Ashu</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
