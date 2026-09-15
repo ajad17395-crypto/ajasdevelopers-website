@@ -1,613 +1,1124 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AJAS Developers | Independent Android Software Studio</title>
-  
-  <!-- Preconnect Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Theme Flash Prevention -->
-  <script>
-    (function() {
-      try {
-        var saved = localStorage.getItem('ajas_theme');
-        if (saved) {
-          document.documentElement.setAttribute('data-theme', saved);
-        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-          document.documentElement.setAttribute('data-theme', 'light');
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AJAS Developers — Simple, Useful &amp; Beautiful Android Apps</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              blue: '#2563EB',
+              purple: '#7C3AED',
+              cyan: '#06B6D4',
+              pink: '#EC4899',
+              indigo: '#4F46E5',
+              amber: '#F59E0B',
+              orange: '#F97316',
+              dark: '#0B0F19',
+              darkCard: '#111827'
+            }
+          },
+          animation: {
+            'float-slow': 'float 7s ease-in-out infinite',
+            'float-reverse': 'float-reverse 6s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
+            'shimmer': 'shimmer 2.5s infinite linear',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-14px)' },
+            },
+            'float-reverse': {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(12px)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.45', transform: 'scale(1)' },
+              '50%': { opacity: '0.75', transform: 'scale(1.06)' },
+            }
+          }
         }
-      } catch (e) {}
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        overflow-x: hidden;
+      }
+      body {
+        overscroll-behavior-y: none;
+      }
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F8FAFC;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+    }
+    .mesh-gradient-bg {
+      background-color: #FAFAFD;
+      background-image: 
+        radial-gradient(at 10% 12%, rgba(37, 99, 235, 0.08) 0px, transparent 55%),
+        radial-gradient(at 88% 8%, rgba(124, 58, 237, 0.09) 0px, transparent 55%),
+        radial-gradient(at 50% 35%, rgba(6, 182, 212, 0.06) 0px, transparent 60%),
+        radial-gradient(at 80% 65%, rgba(236, 72, 153, 0.05) 0px, transparent 55%),
+        radial-gradient(at 15% 85%, rgba(79, 70, 229, 0.07) 0px, transparent 50%);
+    }
+  </style>
+</head>
+<body class="mesh-gradient-bg text-slate-800 font-sans antialiased selection:bg-blue-600 selection:text-white">
+<!-- 1. PREMIUM GLASSMORPHISM NAVBAR -->
+<header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+<!-- Brand Wordmark & Dynamic Gradient Icon -->
+<a class="flex items-center gap-3 group" href="#">
+<div class="relative w-11 h-11 rounded-2xl p-[2px] bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 shadow-md shadow-blue-500/25 transition-transform duration-300 group-hover:scale-105 group-hover:rotate-1">
+<div class="w-full h-full rounded-[14px] bg-white flex items-center justify-center overflow-hidden">
+<svg class="w-8 h-8 drop-shadow-sm" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<rect fill="url(#navBrandGrad)" height="48" rx="12" width="48"></rect>
+<path d="M14 34L24 14L34 34H28.5L24 23.5L19.5 34H14Z" fill="white"></path>
+<circle cx="24" cy="27" fill="#93C5FD" r="2.5"></circle>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="navBrandGrad" x1="0" x2="48" y1="0" y2="48">
+<stop stop-color="#2563EB"></stop>
+<stop offset="0.5" stop-color="#4F46E5"></stop>
+<stop offset="1" stop-color="#7C3AED"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-extrabold text-xl tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">AJAS Developers</span>
+<span class="text-[10px] font-bold uppercase tracking-widest bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Software Studio</span>
+</div>
+</a>
+<!-- Desktop Center Pill Navigation -->
+<nav class="hidden md:flex items-center gap-1.5 p-1.5 bg-slate-100/80 backdrop-blur-md rounded-full border border-slate-200/80 shadow-inner">
+<a class="px-4 py-1.5 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full shadow-sm" href="#">Home</a>
+<a class="px-4 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white/80 rounded-full transition-all" href="#categories">Categories</a>
+<a class="px-4 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white/80 rounded-full transition-all" href="#apps">Apps</a>
+<a class="px-4 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white/80 rounded-full transition-all" href="#featured">Featured</a>
+<a class="px-4 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white/80 rounded-full transition-all" href="#about">About</a>
+<a class="px-4 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white/80 rounded-full transition-all" href="#support">Support</a>
+</nav>
+<!-- CTA & Play Store Link -->
+<div class="flex items-center gap-3">
+<a class="hidden sm:inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 border border-slate-200 text-slate-600 hover:text-blue-600 hover:bg-blue-50/60 hover:border-blue-200 transition-all shadow-sm" href="https://play.google.com/store" rel="noopener noreferrer" target="_blank" title="Google Play Store">
+<span class="material-symbols-outlined text-[20px]">shop</span>
+</a>
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5 transition-all duration-200" href="#apps">
+<span class="material-symbols-outlined text-[18px]">apps</span>
+<span>Explore Apps</span>
+</a>
+<!-- Mobile menu toggle -->
+<button aria-label="Toggle Menu" class="md:hidden w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 hover:text-blue-600" id="mobile-menu-btn">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Nav Flyout -->
+<div class="hidden md:hidden px-4 pt-2 pb-6 bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-xl" id="mobile-nav-panel">
+<nav class="flex flex-col gap-2">
+<a class="px-4 py-2.5 rounded-xl font-semibold text-blue-600 bg-blue-50/80" href="#">Home</a>
+<a class="px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-slate-50" href="#categories">Categories</a>
+<a class="px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-slate-50" href="#apps">Apps</a>
+<a class="px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-slate-50" href="#featured">Featured App</a>
+<a class="px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-slate-50" href="#about">About AJAS</a>
+<a class="px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-slate-50" href="#support">Support &amp; FAQ</a>
+<div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+<a class="inline-flex items-center gap-2 text-sm font-semibold text-slate-700" href="https://play.google.com/store" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px] text-blue-600">shop</span>
+<span>Google Play Store</span>
+</a>
+</div>
+</nav>
+</div>
+</header>
+<main class="relative w-full pt-20">
+<!-- 2. HERO SECTION -->
+<section class="relative min-h-[calc(100vh-5rem)] flex items-center overflow-hidden py-16 lg:py-24">
+<!-- Ambient Multi-Color Animated Glowing Orbs -->
+<div class="absolute top-10 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[110px] pointer-events-none animate-pulse-glow -z-10"></div>
+<div class="absolute top-1/3 right-10 w-[420px] h-[420px] bg-purple-500/25 rounded-full blur-[120px] pointer-events-none animate-pulse-glow -z-10" style="animation-delay: 2s;"></div>
+<div class="absolute bottom-10 left-10 w-80 h-80 bg-cyan-400/20 rounded-full blur-[100px] pointer-events-none animate-pulse-glow -z-10" style="animation-delay: 1s;"></div>
+<div class="absolute -bottom-20 right-1/3 w-80 h-80 bg-pink-500/20 rounded-full blur-[110px] pointer-events-none -z-10"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+<!-- Hero Left: Typography & CTAs -->
+<div class="lg:col-span-7 flex flex-col items-start gap-6 z-10 text-left">
+<!-- Colorful Top Chip -->
+<div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-sm">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+</span>
+<span class="text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                100% Android Native • Privacy-First Studio
+              </span>
+</div>
+<!-- Main Heading with Rich Gradient Text Accent -->
+<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
+              Building <span class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">Simple, Useful &amp; Beautiful</span> Apps.
+            </h1>
+<p class="text-lg sm:text-xl text-slate-600 max-w-2xl leading-relaxed font-normal">
+              AJAS Developers creates practical Android applications designed to make everyday tasks simpler, faster and more useful. Thoughtfully crafted tools with on-device processing and zero unnecessary permissions.
+            </p>
+<!-- Main Action Buttons -->
+<div class="flex flex-wrap items-center gap-3.5 pt-2">
+<a class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full text-white font-semibold text-base bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 shadow-xl shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:-translate-y-0.5 transition-all duration-200 group" href="#apps">
+<span>Explore Our Apps</span>
+<span class="material-symbols-outlined text-[20px] transition-transform duration-200 group-hover:translate-y-0.5">arrow_downward</span>
+</a>
+<a class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/90 backdrop-blur-md text-slate-800 hover:text-blue-600 font-semibold text-base border border-slate-200/90 shadow-sm hover:border-blue-300 hover:bg-white hover:-translate-y-0.5 transition-all duration-200" href="#about">
+<span>About AJAS Developers</span>
+</a>
+<a class="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-full text-slate-600 hover:text-blue-600 font-medium text-sm transition-colors" href="https://play.google.com/store" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">shop</span>
+<span>Play Store</span>
+<span class="material-symbols-outlined text-[14px]">north_east</span>
+</a>
+</div>
+<!-- Feature Pill Chips with Colorful Mini Icons -->
+<div class="flex flex-wrap items-center gap-2.5 pt-4">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 backdrop-blur-sm border border-blue-100 shadow-sm text-xs font-semibold text-slate-700">
+<span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">android</span>
+</span>
+<span>100% Android Native</span>
+</div>
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 backdrop-blur-sm border border-emerald-100 shadow-sm text-xs font-semibold text-slate-700">
+<span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+</span>
+<span>Privacy-First &amp; On-Device</span>
+</div>
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 backdrop-blur-sm border border-amber-100 shadow-sm text-xs font-semibold text-slate-700">
+<span class="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+</span>
+<span>Fast &amp; Lightweight</span>
+</div>
+</div>
+</div>
+<!-- Hero Right: Isometric / Floating Multi-Layered App Cards Graphic -->
+<div class="lg:col-span-5 relative flex justify-center items-center py-8">
+<!-- Ambient Glow behind cluster -->
+<div class="absolute inset-0 bg-gradient-to-tr from-blue-500/30 via-purple-500/25 to-pink-500/25 rounded-full filter blur-3xl scale-95 -z-10 animate-pulse-glow"></div>
+<div class="relative w-full max-w-md flex flex-col gap-4">
+<!-- CARD 1: GPS Map Camera (Live Overlay Viewfinder) -->
+<div class="animate-float-slow bg-white/95 backdrop-blur-xl rounded-3xl p-5 border border-white/80 shadow-[0_20px_50px_rgba(37,99,235,0.18)] transition-all hover:scale-[1.02] duration-300">
+<div class="flex items-center justify-between pb-3.5 border-b border-slate-100">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/30">
+<span class="material-symbols-outlined text-[22px]">photo_camera</span>
+</div>
+<div>
+<h2 class="text-base font-bold text-slate-900 leading-tight">GPS Map Camera</h2>
+<p class="text-xs font-medium text-slate-500">Live Location Stamping</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-[11px] font-bold tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    ACTIVE
+                  </span>
+</div>
+<!-- Simulated Viewfinder with Live Stamp Overlay -->
+<div class="mt-3.5 relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 shadow-inner group">
+<div class="h-32 w-full relative bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCZ4lG9wXPMh677agV7CE_TGyGIEOrGs-lp6HbigGlv6gDnLr5oz6MvIOlLMS-9Po8uZKNxoyUnoaNukWpXTfFqrof9javUEjCzk6TBG9RknnP8b29G6LUuXf63NAg-qrChCc7iz0WF2Nagj34oeAWvooUGje6FeT7orChy9i-OuKlGCfAJzMjVUBY_eYflHpX1Bp-sBVAVbTFqt6pt1Qu0gdZQ6oRfs3n60wrJ4rLq1eYkNKMiQn10');">
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent"></div>
+<!-- Compass ring indicator top right -->
+<div class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[10px] font-mono text-cyan-300 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">explore</span>
+<span>108° ENE</span>
+</div>
+<!-- Live Stamp Badge Overlay -->
+<div class="absolute bottom-2.5 left-2.5 right-2.5 p-2.5 rounded-xl bg-slate-950/85 backdrop-blur-md border border-white/10 text-white flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px] font-mono text-cyan-300">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-blue-400">pin_drop</span>
+                          28.6139° N, 77.2090° E
+                        </span>
+<span class="bg-blue-900/60 px-1.5 py-0.2 rounded border border-blue-400/30 text-blue-200 text-[10px]">Alt: 216m</span>
+</div>
+<div class="text-[11px] text-slate-200 font-medium truncate">New Delhi, Central Secretariat • India</div>
+<div class="text-[9px] text-slate-400 font-mono flex items-center justify-between">
+<span>2026-04-18 14:32:09 UTC+05:30</span>
+<span class="text-emerald-400">±2.4m</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD 2: Shri Radha Naam Jap (Overlapping Pink/Violet Float) -->
+<div class="animate-float-reverse bg-white/95 backdrop-blur-xl rounded-3xl p-4 border border-white/80 shadow-[0_16px_40px_rgba(236,72,153,0.15)] -mt-4 ml-6 transition-all hover:scale-[1.02] duration-300">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center text-white text-xl font-bold shadow-md shadow-pink-500/30">
+<span>ॐ</span>
+</div>
+<div>
+<div class="text-sm font-bold text-slate-900">Shri Radha Naam Jap</div>
+<div class="text-xs font-medium text-pink-600 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">favorite</span>
+<span>Daily Mala: 108 Reps Completed</span>
+</div>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-pink-50 border border-pink-200 text-[11px] font-bold text-pink-600">
+                    MALA SYNC
+                  </span>
+</div>
+</div>
+<!-- CARD 3: QR & Barcode Pro (Overlapping Cyan/Indigo Float) -->
+<div class="animate-float-slow bg-white/95 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-[0_16px_40px_rgba(6,182,212,0.15)] -mt-3 mr-6 transition-all hover:scale-[1.02] duration-300" style="animation-delay: 1.5s;">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-md shadow-cyan-500/25">
+<span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+</div>
+<div>
+<div class="text-sm font-bold text-slate-900">QR &amp; Barcode Pro</div>
+<div class="text-xs text-slate-500">Zero tracking • 100% Local ML Engine</div>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-cyan-50 border border-cyan-200 text-[10px] font-extrabold text-cyan-700 tracking-wider">
+                    FAST ML
+                  </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. APP CATEGORIES SECTION (NEW DEDICATED SHOWCASE) -->
+<section class="py-16 lg:py-20 relative scroll-mt-20" id="categories">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-12">
+<div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gradient-to-r from-blue-50 to-purple-50 border border-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-3">
+<span class="material-symbols-outlined text-[16px]">category</span>
+<span>Studio Ecosystem</span>
+</div>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            App Categories
+          </h2>
+<p class="mt-3 text-base sm:text-lg text-slate-600">
+            Focused Android applications thoughtfully categorized around daily utility, focus, and lifestyle.
+          </p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+<!-- Category 1: Camera & Photography -->
+<div class="group relative rounded-3xl p-6 bg-white border border-blue-100 hover:border-blue-400/80 shadow-md hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col justify-between">
+<div class="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-gradient-to-br from-blue-500/15 to-purple-500/15 blur-xl group-hover:scale-150 transition-transform"></div>
+<div>
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-purple-600 text-white flex items-center justify-center shadow-md shadow-blue-500/30 mb-4 group-hover:rotate-6 transition-transform">
+<span class="material-symbols-outlined text-[24px]">photo_camera</span>
+</div>
+<h3 class="font-bold text-slate-900 text-lg mb-1">Camera &amp; Photography</h3>
+<p class="text-xs text-slate-500 leading-relaxed">
+                Geotagging, timestamps, satellite coordinates, and precise field documentation.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-blue-600">
+<span>GPS Map Camera</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Category 2: Utilities & Tools -->
+<div class="group relative rounded-3xl p-6 bg-white border border-cyan-100 hover:border-cyan-400/80 shadow-md hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col justify-between">
+<div class="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-gradient-to-br from-cyan-500/15 to-blue-500/15 blur-xl group-hover:scale-150 transition-transform"></div>
+<div>
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 text-white flex items-center justify-center shadow-md shadow-cyan-500/30 mb-4 group-hover:rotate-6 transition-transform">
+<span class="material-symbols-outlined text-[24px]">build</span>
+</div>
+<h3 class="font-bold text-slate-900 text-lg mb-1">Utilities &amp; Tools</h3>
+<p class="text-xs text-slate-500 leading-relaxed">
+                High-speed offline barcode recognition, custom formats, and fast device utilities.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-cyan-600">
+<span>Code Generators</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Category 3: Productivity -->
+<div class="group relative rounded-3xl p-6 bg-white border border-purple-100 hover:border-purple-400/80 shadow-md hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col justify-between">
+<div class="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-gradient-to-br from-purple-500/15 to-indigo-500/15 blur-xl group-hover:scale-150 transition-transform"></div>
+<div>
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 text-white flex items-center justify-center shadow-md shadow-purple-500/30 mb-4 group-hover:rotate-6 transition-transform">
+<span class="material-symbols-outlined text-[24px]">qr_code_2</span>
+</div>
+<h3 class="font-bold text-slate-900 text-lg mb-1">Productivity</h3>
+<p class="text-xs text-slate-500 leading-relaxed">
+                Streamlined tools engineered with zero cloud lag and pure local efficiency.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-purple-600">
+<span>QR &amp; Barcode Pro</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Category 4: Devotional & Spiritual -->
+<div class="group relative rounded-3xl p-6 bg-white border border-pink-100 hover:border-pink-400/80 shadow-md hover:shadow-xl hover:shadow-pink-500/10 transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col justify-between">
+<div class="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-gradient-to-br from-pink-500/15 to-purple-500/15 blur-xl group-hover:scale-150 transition-transform"></div>
+<div>
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 to-purple-600 text-white flex items-center justify-center shadow-md shadow-pink-500/30 mb-4 group-hover:rotate-6 transition-transform text-2xl font-bold">
+<span>ॐ</span>
+</div>
+<h3 class="font-bold text-slate-900 text-lg mb-1">Devotional &amp; Spiritual</h3>
+<p class="text-xs text-slate-500 leading-relaxed">
+                Peaceful, ad-free mantra counters for mindful chanting and spiritual consistency.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-pink-600">
+<span>Radha Naam Jaap</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Category 5: Logic & Games -->
+<div class="group relative rounded-3xl p-6 bg-white border border-amber-100 hover:border-amber-400/80 shadow-md hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col justify-between">
+<div class="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-gradient-to-br from-amber-500/15 to-orange-500/15 blur-xl group-hover:scale-150 transition-transform"></div>
+<div>
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-md shadow-amber-500/30 mb-4 group-hover:rotate-6 transition-transform">
+<span class="material-symbols-outlined text-[24px]">sports_esports</span>
+</div>
+<h3 class="font-bold text-slate-900 text-lg mb-1">Logic &amp; Games</h3>
+<p class="text-xs text-slate-500 leading-relaxed">
+                Minimalist brain teasers, directional puzzles, and offline spatial challenges.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-amber-600">
+<span>Arrow Escape</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. OUR APPS DIRECTORY SECTION -->
+<section class="py-16 lg:py-24 relative scroll-mt-20" id="apps">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-10">
+<div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider mb-3">
+<span class="material-symbols-outlined text-[16px]">widgets</span>
+<span>Production Catalog</span>
+</div>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Our Apps
+          </h2>
+<p class="mt-3 text-base sm:text-lg text-slate-600">
+            Useful apps designed with simplicity, performance and everyday usability in mind.
+          </p>
+<!-- Interactive Filter Bar -->
+<div class="flex flex-wrap items-center justify-center gap-2 mt-8" id="apps-filter-bar">
+<button class="filter-btn px-5 py-2 rounded-full font-semibold text-sm bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/20 transition-all duration-200" data-filter="all">
+              All Apps
+            </button>
+<button class="filter-btn px-5 py-2 rounded-full font-medium text-sm bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300 transition-all duration-200" data-filter="camera">
+              Camera &amp; Utility
+            </button>
+<button class="filter-btn px-5 py-2 rounded-full font-medium text-sm bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300 transition-all duration-200" data-filter="productivity">
+              Productivity
+            </button>
+<button class="filter-btn px-5 py-2 rounded-full font-medium text-sm bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300 transition-all duration-200" data-filter="devotional">
+              Devotional
+            </button>
+<button class="filter-btn px-5 py-2 rounded-full font-medium text-sm bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300 transition-all duration-200" data-filter="game">
+              Games
+            </button>
+</div>
+</div>
+<!-- 4 Elevated App Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="apps-grid">
+<!-- App 1: GPS Map Camera (Blue -> Purple Theme) -->
+<div class="app-item group bg-white rounded-3xl p-7 border border-slate-200/90 hover:border-blue-300 shadow-lg hover:shadow-2xl hover:shadow-blue-500/15 transition-all duration-300 flex flex-col justify-between" data-category="camera">
+<div>
+<div class="flex items-start justify-between gap-4 mb-5">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-purple-600 text-white flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[30px]">photo_camera</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  AVAILABLE NOW
+                </span>
+</div>
+<span class="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-1">
+                Camera &amp; Photography
+              </span>
+<h3 class="text-2xl font-bold text-slate-900 mb-2.5 group-hover:text-blue-600 transition-colors">
+                GPS Map Camera
+              </h3>
+<p class="text-sm text-slate-600 leading-relaxed mb-6">
+                Capture photos and videos with real-time GPS coordinates, address, and live timestamp overlays.
+              </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold">GPS Geotag</span>
+<span class="px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-semibold">Live Timestamp</span>
+<span class="px-3 py-1 rounded-full bg-purple-50 border border-purple-100 text-purple-700 text-xs font-semibold">Photo &amp; Video</span>
+</div>
+</div>
+<div class="flex items-center gap-3 pt-5 border-t border-slate-100">
+<a class="flex-1 text-center py-2.5 px-4 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm transition-colors" href="gps-map-camera.html">
+                Product Page
+              </a>
+<a class="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-sm shadow-md shadow-blue-500/20 transition-all" href="https://play.google.com/store/apps/details?id=com.aistudio.gpscamera.vjqmks" rel="noopener noreferrer" target="_blank">
+<span>Google Play</span>
+<span class="material-symbols-outlined text-[15px]">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- App 2: QR & Barcode Pro (Cyan -> Blue Theme) -->
+<div class="app-item group bg-white rounded-3xl p-7 border border-slate-200/90 hover:border-cyan-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-500/15 transition-all duration-300 flex flex-col justify-between" data-category="productivity">
+<div>
+<div class="flex items-start justify-between gap-4 mb-5">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 text-white flex items-center justify-center shadow-lg shadow-cyan-500/30 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[30px]">qr_code_scanner</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  AVAILABLE NOW
+                </span>
+</div>
+<span class="text-xs font-bold text-cyan-600 uppercase tracking-wider block mb-1">
+                Productivity &amp; Utility
+              </span>
+<h3 class="text-2xl font-bold text-slate-900 mb-2.5 group-hover:text-cyan-600 transition-colors">
+                QR &amp; Barcode Pro
+              </h3>
+<p class="text-sm text-slate-600 leading-relaxed mb-6">
+                Fast, 100% offline QR code and barcode scanner and generator with zero tracking or data storage.
+              </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 rounded-full bg-cyan-50 border border-cyan-100 text-cyan-700 text-xs font-semibold">Fast Scanner</span>
+<span class="px-3 py-1 rounded-full bg-sky-50 border border-sky-100 text-sky-700 text-xs font-semibold">100% Offline</span>
+<span class="px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold">Custom Generator</span>
+</div>
+</div>
+<div class="flex items-center gap-3 pt-5 border-t border-slate-100">
+<a class="flex-1 text-center py-2.5 px-4 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm transition-colors" href="qr-barcode-pro.html">
+                Product Page
+              </a>
+<a class="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-semibold text-sm shadow-md shadow-cyan-500/20 transition-all" href="https://play.google.com/store/apps/details?id=com.yourcompany.code128generator" rel="noopener noreferrer" target="_blank">
+<span>Google Play</span>
+<span class="material-symbols-outlined text-[15px]">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- App 3: Shri Radha Naam Jaap (Pink -> Violet Theme) -->
+<div class="app-item group bg-white rounded-3xl p-7 border border-slate-200/90 hover:border-pink-300 shadow-lg hover:shadow-2xl hover:shadow-pink-500/15 transition-all duration-300 flex flex-col justify-between" data-category="devotional">
+<div>
+<div class="flex items-start justify-between gap-4 mb-5">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pink-500 to-purple-600 text-white flex items-center justify-center text-3xl font-bold shadow-lg shadow-pink-500/30 group-hover:scale-105 transition-transform">
+<span>ॐ</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  AVAILABLE NOW
+                </span>
+</div>
+<span class="text-xs font-bold text-pink-600 uppercase tracking-wider block mb-1">
+                Devotional &amp; Spirituality
+              </span>
+<h3 class="text-2xl font-bold text-slate-900 mb-2.5 group-hover:text-pink-600 transition-colors">
+                Radha Naam Jaap
+              </h3>
+<p class="text-sm text-slate-600 leading-relaxed mb-6">
+                Your Daily Devotional Companion. A simple and peaceful app for focused Radha Naam Jaap, daily practice, and mindful spiritual moments.
+              </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 rounded-full bg-pink-50 border border-pink-100 text-pink-700 text-xs font-semibold">Offline Jap Counter</span>
+<span class="px-3 py-1 rounded-full bg-purple-50 border border-purple-100 text-purple-700 text-xs font-semibold">Devotional Mantras</span>
+<span class="px-3 py-1 rounded-full bg-rose-50 border border-rose-100 text-rose-700 text-xs font-semibold">Simple &amp; Peaceful</span>
+<span class="px-3 py-1 rounded-full bg-amber-50 border border-amber-100 text-amber-700 text-xs font-semibold">No Login Required</span>
+</div>
+</div>
+<div class="flex items-center gap-3 pt-5 border-t border-slate-100">
+<a class="flex-1 text-center py-2.5 px-4 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm transition-colors" href="radha-naam-jaap.html">
+                Product Page
+              </a>
+<a class="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-semibold text-sm shadow-md shadow-pink-500/20 transition-all" href="radha-naam-jaap.html">
+<span>Explore App</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- App 4: Arrow Escape (Amber -> Orange Theme) -->
+<div class="app-item group bg-white rounded-3xl p-7 border border-slate-200/90 hover:border-amber-300 shadow-lg hover:shadow-2xl hover:shadow-amber-500/15 transition-all duration-300 flex flex-col justify-between" data-category="game">
+<div>
+<div class="flex items-start justify-between gap-4 mb-5">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-lg shadow-amber-500/30 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[30px]">turn_sharp_right</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-bold">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                  IN DEVELOPMENT
+                </span>
+</div>
+<span class="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">
+                Logic &amp; Puzzle Game
+              </span>
+<h3 class="text-2xl font-bold text-slate-900 mb-2.5 group-hover:text-amber-600 transition-colors">
+                Arrow Escape
+              </h3>
+<p class="text-sm text-slate-600 leading-relaxed mb-6">
+                A minimalist logic puzzle navigating directional arrow paths and untangling intricate maze challenges.
+              </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 rounded-full bg-amber-50 border border-amber-100 text-amber-700 text-xs font-semibold">Logic Puzzle</span>
+<span class="px-3 py-1 rounded-full bg-orange-50 border border-orange-100 text-orange-700 text-xs font-semibold">Brain Training</span>
+<span class="px-3 py-1 rounded-full bg-purple-50 border border-purple-100 text-purple-700 text-xs font-semibold">Offline Play</span>
+</div>
+</div>
+<div class="pt-5 border-t border-slate-100">
+<a class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-slate-100 hover:bg-gradient-to-r hover:from-amber-500 hover:to-orange-500 hover:text-white text-slate-800 font-semibold text-sm transition-all duration-200" href="arrow-escape.html">
+<span>Game Concept &amp; Details</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. FEATURED APP SHOWCASE (GPS MAP CAMERA) -->
+<section class="py-16 lg:py-24 relative scroll-mt-20" id="featured">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Deep Rich Gradient Container -->
+<div class="relative rounded-3xl lg:rounded-[36px] bg-gradient-to-br from-slate-950 via-indigo-950 to-purple-950 p-8 sm:p-10 lg:p-14 text-white shadow-2xl overflow-hidden border border-indigo-900/60">
+<!-- Glowing Light Effects inside banner -->
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-600/30 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-600/30 rounded-full blur-3xl pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center relative z-10">
+<!-- Left: High-Fidelity Smartphone Mockup with Viewfinder & Stamped Metadata -->
+<div class="lg:col-span-5 flex justify-center order-2 lg:order-1">
+<div class="relative w-full max-w-sm rounded-[32px] p-4 bg-slate-900/90 backdrop-blur-xl border border-indigo-500/40 shadow-[0_25px_60px_rgba(0,0,0,0.5)]">
+<!-- Phone top speaker notch simulation -->
+<div class="w-24 h-4 bg-slate-950 rounded-full mx-auto mb-3 flex items-center justify-center gap-2">
+<div class="w-8 h-1 bg-slate-700 rounded-full"></div>
+<div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+</div>
+<!-- Simulated Camera Viewfinder -->
+<div class="relative rounded-2xl overflow-hidden bg-slate-950 border border-white/10 shadow-inner">
+<img class="w-full h-80 object-cover" data-alt="Modern smartphone camera viewfinder interface showing high resolution urban architectural photography with translucent informational badges displaying GPS coordinates, timestamp, compass direction, and satellite elevation in clean minimalist typography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ4lG9wXPMh677agV7CE_TGyGIEOrGs-lp6HbigGlv6gDnLr5oz6MvIOlLMS-9Po8uZKNxoyUnoaNukWpXTfFqrof9javUEjCzk6TBG9RknnP8b29G6LUuXf63NAg-qrChCc7iz0WF2Nagj34oeAWvooUGje6FeT7orChy9i-OuKlGCfAJzMjVUBY_eYflHpX1Bp-sBVAVbTFqt6pt1Qu0gdZQ6oRfs3n60wrJ4rLq1eYkNKMiQn10"/>
+<!-- Viewfinder grid lines -->
+<div class="absolute inset-0 grid grid-cols-3 grid-rows-3 pointer-events-none">
+<div class="border-b border-r border-white/15"></div>
+<div class="border-b border-r border-white/15"></div>
+<div class="border-b border-white/15"></div>
+<div class="border-b border-r border-white/15"></div>
+<div class="border-b border-r border-white/15"></div>
+<div class="border-b border-white/15"></div>
+<div class="border-r border-white/15"></div>
+<div class="border-r border-white/15"></div>
+<div></div>
+</div>
+<!-- Live Geotag Watermark Overlay -->
+<div class="absolute bottom-3 left-3 right-3 bg-slate-950/85 backdrop-blur-md rounded-xl p-3 border border-white/15 shadow-xl text-left">
+<div class="flex items-center justify-between text-[11px] font-mono font-semibold text-cyan-300 mb-1">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-blue-400">location_on</span>
+                        28°36'50.2" N 77°12'32.4" E
+                      </span>
+<span class="text-blue-300 font-mono">108° ENE</span>
+</div>
+<div class="text-[12px] font-semibold text-white leading-snug">Rajpath, India Gate Complex, New Delhi</div>
+<div class="flex items-center justify-between text-[10px] text-slate-300 mt-1 font-mono">
+<span>Accuracy: ±3.2m</span>
+<span>2026-04-18 16:45:12 IST</span>
+</div>
+</div>
+</div>
+<!-- Phone Bottom Status Pill -->
+<div class="mt-3 flex items-center justify-between px-2 text-xs text-slate-400">
+<span class="inline-flex items-center gap-1 text-emerald-400 font-medium">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+<span>Verifiable Metadata</span>
+</span>
+<span class="font-mono text-[11px] text-cyan-300 bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-500/30">HD 4K Stamped</span>
+</div>
+</div>
+</div>
+<!-- Right: App Details & Action Buttons -->
+<div class="lg:col-span-7 flex flex-col items-start gap-6 order-1 lg:order-2 text-left">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-400/30 text-cyan-300 text-xs font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px] text-amber-400">star</span>
+<span>Featured Application</span>
+</div>
+<div>
+<h3 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                  GPS Map Camera — <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">Real-Time Geotagging</span>
+</h3>
+<p class="text-base sm:text-lg text-slate-300 mt-4 leading-relaxed">
+                  A comprehensive field documentation camera app that stamps verifiable GPS data, compass heading, and satellite coordinates directly onto high-resolution photos and videos. Built for field workers, travelers, surveyors, and memory preservation.
+                </p>
+</div>
+<!-- Feature Bullets -->
+<div class="flex flex-col gap-3.5 w-full">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-cyan-300 shrink-0">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<span class="text-sm sm:text-base text-slate-200 font-medium">High accuracy on-device GPS &amp; reverse geocoding</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-purple-500/20 border border-purple-400/40 flex items-center justify-center text-purple-300 shrink-0">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<span class="text-sm sm:text-base text-slate-200 font-medium">Custom watermark layouts and customizable timestamp formats</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-300 shrink-0">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<span class="text-sm sm:text-base text-slate-200 font-medium">100% offline functionality — never uploads your location data to remote servers</span>
+</div>
+</div>
+<!-- Prominent Action Buttons -->
+<div class="flex flex-wrap items-center gap-4 pt-2">
+<a class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-base text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:-translate-y-0.5 transition-all" href="https://play.google.com/store/apps/details?id=com.aistudio.gpscamera.vjqmks" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">shop</span>
+<span>Get on Google Play</span>
+</a>
+<a class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-base border border-white/20 backdrop-blur-md hover:-translate-y-0.5 transition-all" href="gps-map-camera.html">
+<span>Explore Features</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. WHY AJAS DEVELOPERS (4 COLORFUL FEATURE CARDS) -->
+<section class="py-16 lg:py-20 relative scroll-mt-20" id="principles">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-12">
+<div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs font-bold uppercase tracking-wider mb-3">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Studio DNA</span>
+</div>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Why AJAS Developers
+          </h2>
+<p class="mt-3 text-base sm:text-lg text-slate-600">
+            Four foundational engineering pillars that guide each app we build from scratch.
+          </p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1: Simple & Practical -->
+<div class="group bg-white rounded-3xl p-7 border border-blue-100 hover:border-blue-400 shadow-md hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center shadow-md shadow-blue-500/25 mb-5 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px]">auto_awesome</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 mb-2">Simple &amp; Practical</h3>
+<p class="text-sm text-slate-600 leading-relaxed">
+                Apps designed to solve real everyday problems without bloated menus, redundant steps, or confusing onboarding.
+              </p>
+</div>
+<div class="mt-5 text-xs font-bold uppercase tracking-wider text-blue-600">
+              Clear &amp; Intuitive
+            </div>
+</div>
+<!-- Card 2: Fast & Lightweight -->
+<div class="group bg-white rounded-3xl p-7 border border-amber-100 hover:border-amber-400 shadow-md hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-md shadow-amber-500/25 mb-5 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px]">bolt</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 mb-2">Fast &amp; Lightweight</h3>
+<p class="text-sm text-slate-600 leading-relaxed">
+                Focused on smooth native performance and minimal battery overhead, staying responsive across hardware specs.
+              </p>
+</div>
+<div class="mt-5 text-xs font-bold uppercase tracking-wider text-amber-600">
+              Native Android Speed
+            </div>
+</div>
+<!-- Card 3: Privacy Focused -->
+<div class="group bg-white rounded-3xl p-7 border border-emerald-100 hover:border-emerald-400 shadow-md hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-600 text-white flex items-center justify-center shadow-md shadow-emerald-500/25 mb-5 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px]">lock</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 mb-2">Privacy Focused</h3>
+<p class="text-sm text-slate-600 leading-relaxed">
+                Designed with responsible handling of user data in mind. On-device processing and no personal data harvesting.
+              </p>
+</div>
+<div class="mt-5 text-xs font-bold uppercase tracking-wider text-emerald-600">
+              100% On-Device
+            </div>
+</div>
+<!-- Card 4: Modern Design -->
+<div class="group bg-white rounded-3xl p-7 border border-purple-100 hover:border-purple-400 shadow-md hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-600 text-white flex items-center justify-center shadow-md shadow-purple-500/25 mb-5 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px]">palette</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 mb-2">Modern Design</h3>
+<p class="text-sm text-slate-600 leading-relaxed">
+                Clean and intuitive interfaces across devices with thoughtful color accents, typography, and responsive ergonomics.
+              </p>
+</div>
+<div class="mt-5 text-xs font-bold uppercase tracking-wider text-purple-600">
+              Polished Ergonomics
+            </div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. ABOUT AJAS DEVELOPERS -->
+<section class="py-16 lg:py-24 relative scroll-mt-20" id="about">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="relative rounded-3xl lg:rounded-[36px] bg-white p-8 sm:p-12 lg:p-16 border border-slate-200/90 shadow-xl overflow-hidden">
+<!-- Background Glow Shape -->
+<div class="absolute -top-32 -right-32 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<!-- Left Info -->
+<div class="lg:col-span-7 flex flex-col items-start gap-5">
+<div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span>Independent Studio</span>
+</div>
+<h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                Made with Ideas. <br/>
+<span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">Built with Purpose.</span>
+</h2>
+<p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+                AJAS Developers is an independent Android development studio founded by <strong class="text-slate-900 font-semibold">Ajad Patel</strong> (with <strong class="text-slate-900 font-semibold">Ashu</strong>). We build lightweight, privacy-first mobile apps that solve real everyday tasks with speed, precision, and dependability.
+              </p>
+<p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+                We believe good software gets out of your way, respects your attention, and keeps your private data strictly on your device. Every feature we ship is tested against real Android hardware standards.
+              </p>
+<!-- Studio Tags -->
+<div class="flex flex-wrap items-center gap-2.5 pt-2">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-slate-700 text-xs font-semibold">
+<span class="material-symbols-outlined text-blue-600 text-[18px]">group</span>
+<span>Founded by Ajad &amp; Ashu</span>
+</div>
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-slate-700 text-xs font-semibold">
+<span class="material-symbols-outlined text-purple-600 text-[18px]">android</span>
+<span>100% Android Native</span>
+</div>
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-slate-700 text-xs font-semibold">
+<span class="material-symbols-outlined text-emerald-600 text-[18px]">lock</span>
+<span>Privacy &amp; Local Storage</span>
+</div>
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-slate-700 text-xs font-semibold">
+<span class="material-symbols-outlined text-cyan-600 text-[18px]">wifi_off</span>
+<span>Offline First Architecture</span>
+</div>
+</div>
+</div>
+<!-- Right Visual: Abstract Architecture Code Matrix Graphic (NO fake photos) -->
+<div class="lg:col-span-5 relative flex justify-center">
+<div class="w-full max-w-md rounded-3xl p-6 bg-gradient-to-br from-slate-900 to-slate-950 text-white border border-slate-800 shadow-2xl relative overflow-hidden">
+<!-- Glowing gradient rings -->
+<div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-gradient-to-tr from-blue-600/30 to-purple-600/30 blur-2xl"></div>
+<div class="flex items-center justify-between pb-4 border-b border-slate-800">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-rose-500"></span>
+<span class="w-3 h-3 rounded-full bg-amber-500"></span>
+<span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+</div>
+<span class="text-xs font-mono text-slate-400">ajas-studio-manifest.kt</span>
+</div>
+<div class="py-4 font-mono text-xs text-slate-300 leading-relaxed flex flex-col gap-2">
+<div class="text-purple-400"><span class="text-blue-400">package</span> com.ajas.studio.core</div>
+<div class="text-slate-500">// Engineering Principles</div>
+<div><span class="text-pink-400">val</span> studio = AndroidStudio {</div>
+<div class="pl-4 text-cyan-300">architect = <span class="text-amber-300">"Ajad Patel"</span></div>
+<div class="pl-4 text-cyan-300">coFounder = <span class="text-amber-300">"Ashu"</span></div>
+<div class="pl-4 text-cyan-300">privacyFirst = <span class="text-emerald-400">true</span></div>
+<div class="pl-4 text-cyan-300">cloudTelemetry = <span class="text-rose-400">false</span></div>
+<div class="pl-4 text-cyan-300">targetPlatform = <span class="text-blue-300">"Modern Android SDK"</span></div>
+<div>}</div>
+</div>
+<div class="pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-400">
+<span class="flex items-center gap-1.5 text-emerald-400">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Build Verified
+                  </span>
+<span>v2026.04.18</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. SUPPORT & FAQ SECTION -->
+<section class="py-16 lg:py-24 relative scroll-mt-20" id="support">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Vibrant Gradient Border Box -->
+<div class="relative rounded-3xl lg:rounded-[36px] p-[2px] bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 shadow-2xl shadow-purple-500/15">
+<div class="rounded-[34px] bg-white p-8 sm:p-12">
+<div class="text-center max-w-xl mx-auto mb-10">
+<div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-3">
+<span class="material-symbols-outlined text-[16px]">support_agent</span>
+<span>Developer Support</span>
+</div>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                Need Help?
+              </h2>
+<p class="mt-2 text-base text-slate-600">
+                Have a question, found an issue, or need support for one of our apps? Get in touch with us directly.
+              </p>
+<!-- Action button & Direct Email Badge -->
+<div class="flex flex-wrap items-center justify-center gap-3.5 mt-6">
+<a class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-semibold text-sm bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-500/25 hover:-translate-y-0.5 transition-all" href="mailto:iajadpatel@gmail.com">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span>Contact Support</span>
+</a>
+<a class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-mono text-xs sm:text-sm font-semibold transition-colors border border-slate-200" href="mailto:iajadpatel@gmail.com">
+<span class="material-symbols-outlined text-[18px] text-blue-600">alternate_email</span>
+<span>iajadpatel@gmail.com</span>
+</a>
+</div>
+</div>
+<!-- FAQ Accordions -->
+<div class="flex flex-col gap-3.5 pt-4 border-t border-slate-100" id="faq-accordion">
+<!-- FAQ 1 -->
+<div class="faq-item rounded-2xl bg-slate-50 border border-slate-200/80 transition-colors">
+<button class="faq-toggle w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-slate-900 text-base" type="button">
+<span>Why does GPS Map Camera need location permissions?</span>
+<span class="material-symbols-outlined faq-icon text-slate-500 transition-transform duration-200">expand_more</span>
+</button>
+<div class="faq-content hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed">
+                  Location permissions are used solely on-device to retrieve real-time latitude, longitude, elevation, and reverse geocoded street address to stamp directly onto your photos and videos. Your GPS coordinates and location data are strictly processed on your device and are never sent or uploaded to any remote server.
+                </div>
+</div>
+<!-- FAQ 2 -->
+<div class="faq-item rounded-2xl bg-slate-50 border border-slate-200/80 transition-colors">
+<button class="faq-toggle w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-slate-900 text-base" type="button">
+<span>Does QR &amp; Barcode Pro work completely offline?</span>
+<span class="material-symbols-outlined faq-icon text-slate-500 transition-transform duration-200">expand_more</span>
+</button>
+<div class="faq-content hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed">
+                  Yes, 100%. The scanning engine utilizes on-device optical character recognition and ML Kit models bundled directly inside the APK. No network connection is needed to scan, decode, or generate custom QR codes and barcodes.
+                </div>
+</div>
+<!-- FAQ 3 -->
+<div class="faq-item rounded-2xl bg-slate-50 border border-slate-200/80 transition-colors">
+<button class="faq-toggle w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-slate-900 text-base" type="button">
+<span>Is there any user registration or data collection in Shri Radha Naam Jap?</span>
+<span class="material-symbols-outlined faq-icon text-slate-500 transition-transform duration-200">expand_more</span>
+</button>
+<div class="faq-content hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed">
+                  No accounts, emails, or logins are ever requested. Your chant count, completed beads, and daily prayer goals are saved locally within your phone's secure private database, preserving total spiritual peace and personal privacy.
+                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 9. PRE-FOOTER VIBRANT CALL TO ACTION (FINAL CTA) -->
+<section class="py-16 lg:py-20 relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="relative rounded-3xl lg:rounded-[36px] bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 p-8 sm:p-12 lg:p-16 text-center text-white shadow-2xl overflow-hidden">
+<!-- Ambient glowing lights in CTA -->
+<div class="absolute -top-20 -left-20 w-80 h-80 bg-white/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute -bottom-20 -right-20 w-80 h-80 bg-pink-500/30 rounded-full blur-2xl pointer-events-none"></div>
+<div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center gap-4">
+<span class="inline-flex items-center gap-1 px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider">
+              Ready to experience simple apps?
+            </span>
+<h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              Explore the AJAS Developers App Collection
+            </h2>
+<p class="text-base sm:text-lg text-blue-100 max-w-xl">
+              Discover simple and useful apps built for everyday life. Thoughtfully created for modern Android devices.
+            </p>
+<div class="pt-4 flex flex-wrap items-center justify-center gap-3">
+<a class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-blue-600 hover:text-blue-700 font-bold text-base shadow-xl hover:shadow-2xl hover:bg-slate-50 hover:-translate-y-0.5 transition-all" href="#apps">
+<span class="material-symbols-outlined text-[20px]">apps</span>
+<span>Explore Apps</span>
+</a>
+<a class="inline-flex items-center gap-2 px-6 py-4 rounded-full bg-white/15 hover:bg-white/25 text-white font-semibold text-base border border-white/30 backdrop-blur-md transition-all" href="https://play.google.com/store" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">shop</span>
+<span>Google Play</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- 10. DARK CONTRASTING FOOTER -->
+<footer class="w-full bg-[#0B0F19] text-slate-300 relative">
+<!-- Colorful Glowing Gradient Separator Line -->
+<div class="w-full h-[3px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 shadow-[0_0_12px_rgba(124,58,237,0.5)]"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
+<!-- Studio Info Column -->
+<div class="lg:col-span-2 flex flex-col items-start gap-4">
+<a class="flex items-center gap-3 group" href="#">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
+<svg class="w-7 h-7 drop-shadow-sm" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<rect fill="url(#footerBrandGrad)" height="48" rx="12" width="48"></rect>
+<path d="M14 34L24 14L34 34H28.5L24 23.5L19.5 34H14Z" fill="white"></path>
+<circle cx="24" cy="27" fill="#93C5FD" r="2.5"></circle>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="footerBrandGrad" x1="0" x2="48" y1="0" y2="48">
+<stop stop-color="#2563EB"></stop>
+<stop offset="0.5" stop-color="#4F46E5"></stop>
+<stop offset="1" stop-color="#7C3AED"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+<span class="font-bold text-xl text-white tracking-tight">AJAS Developers</span>
+</a>
+<p class="text-sm text-slate-400 leading-relaxed max-w-sm">
+            Building Simple, Useful &amp; Beautiful Apps. Focused, lightweight Android tools with privacy-first engineering and on-device processing.
+          </p>
+<div class="flex flex-col gap-1.5 text-xs text-slate-400 pt-2">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-blue-400">verified_user</span>
+<span>Founded by <strong class="text-slate-200">Ajad Patel</strong> (with Ashu)</span>
+</span>
+<a class="flex items-center gap-2 text-slate-400 hover:text-blue-400 transition-colors" href="mailto:iajadpatel@gmail.com">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+<span>iajadpatel@gmail.com</span>
+</a>
+</div>
+</div>
+<!-- Apps Column -->
+<div class="flex flex-col gap-3">
+<span class="text-xs font-bold text-white uppercase tracking-wider">Apps</span>
+<div class="flex flex-col gap-2 text-sm text-slate-400">
+<a class="hover:text-blue-400 transition-colors" href="gps-map-camera.html">GPS Map Camera</a>
+<a class="hover:text-cyan-400 transition-colors" href="qr-barcode-pro.html">QR &amp; Barcode Pro</a>
+<a class="hover:text-pink-400 transition-colors" href="radha-naam-jaap.html">Radha Naam Jaap</a>
+<a class="hover:text-amber-400 transition-colors" href="arrow-escape.html">Arrow Escape</a>
+</div>
+</div>
+<!-- Studio Links -->
+<div class="flex flex-col gap-3">
+<span class="text-xs font-bold text-white uppercase tracking-wider">Studio</span>
+<div class="flex flex-col gap-2 text-sm text-slate-400">
+<a class="hover:text-blue-400 transition-colors" href="#">Home</a>
+<a class="hover:text-blue-400 transition-colors" href="#about">About Us</a>
+<a class="hover:text-blue-400 transition-colors" href="#principles">Principles</a>
+<a class="hover:text-blue-400 transition-colors" href="#support">Support</a>
+<a class="hover:text-blue-400 transition-colors inline-flex items-center gap-1" href="https://play.google.com/store" rel="noopener noreferrer" target="_blank">
+<span>Google Play Store</span>
+<span class="material-symbols-outlined text-[14px]">north_east</span>
+</a>
+</div>
+</div>
+<!-- Legal Column -->
+<div class="flex flex-col gap-3">
+<span class="text-xs font-bold text-white uppercase tracking-wider">Legal</span>
+<div class="flex flex-col gap-2 text-sm text-slate-400">
+<a class="hover:text-blue-400 transition-colors" href="privacy-policy.html">Privacy Policy</a>
+<a class="hover:text-blue-400 transition-colors" href="disclaimer.html">Disclaimer</a>
+<a class="hover:text-blue-400 transition-colors" href="#terms">Terms of Service</a>
+</div>
+</div>
+</div>
+<!-- Bottom bar -->
+<div class="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+<p>© 2026 AJAS Developers. All rights reserved.</p>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-400">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+<span>100% Android Native &amp; Privacy First</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- Interactive Scripts (Filter, Accordion, Mobile Menu) -->
+<script>
+    (function() {
+      // 1. Mobile Menu Toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileNav = document.getElementById('mobile-nav-panel');
+      if (mobileBtn && mobileNav) {
+        mobileBtn.addEventListener('click', function() {
+          mobileNav.classList.toggle('hidden');
+        });
+        // Close menu when clicking links
+        mobileNav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => mobileNav.classList.add('hidden'));
+        });
+      }
+
+      // 2. Apps Directory Category Filter
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const appItems = document.querySelectorAll('.app-item');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const filter = this.getAttribute('data-filter');
+
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'text-white', 'shadow-md', 'shadow-blue-500/20');
+            b.classList.add('bg-white', 'border', 'border-slate-200', 'text-slate-600');
+          });
+
+          this.classList.remove('bg-white', 'border', 'border-slate-200', 'text-slate-600');
+          this.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-indigo-600', 'text-white', 'shadow-md', 'shadow-blue-500/20');
+
+          appItems.forEach(item => {
+            const cat = item.getAttribute('data-category');
+            if (filter === 'all' || cat === filter) {
+              item.style.display = 'flex';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // 3. Accessible FAQ Accordions
+      const toggles = document.querySelectorAll('.faq-toggle');
+      toggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+          const item = this.parentElement;
+          const content = item.querySelector('.faq-content');
+          const icon = item.querySelector('.faq-icon');
+          const isHidden = content.classList.contains('hidden');
+
+          // Close other panels
+          document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+          document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = 'rotate(0deg)');
+
+          if (isHidden) {
+            content.classList.remove('hidden');
+            icon.style.transform = 'rotate(180deg)';
+          }
+        });
+      });
     })();
   </script>
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Official website of AJAS Developers. Discover useful, lightweight, and privacy-conscious Android applications crafted for real-world productivity." />
-  <meta name="author" content="AJAS Developers" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://ajasdevelopers.in/" />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ajasdevelopers.in/" />
-  <meta property="og:title" content="AJAS Developers | Independent Android Software Studio" />
-  <meta property="og:description" content="Discover useful, lightweight, and privacy-conscious Android applications by AJAS Developers." />
-  <meta property="og:site_name" content="AJAS Developers" />
-
-  <!-- Twitter Meta -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="AJAS Developers | Independent Android Software Studio" />
-  <meta name="twitter:description" content="Discover useful, lightweight, and privacy-conscious Android applications by AJAS Developers." />
-
-  <!-- Structured Data / JSON-LD -->
-  <script type="application/ld+json">
-  [
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "AJAS Developers",
-      "url": "https://ajasdevelopers.in/",
-      "description": "Independent Android app development studio creating practical, lightweight, and privacy-first mobile software.",
-      "founders": [
-        {
-          "@type": "Person",
-          "name": "Ajad"
-        },
-        {
-          "@type": "Person",
-          "name": "Ashu"
-        }
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "iajadpatel@gmail.com",
-        "contactType": "customer support"
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "AJAS Developers",
-      "url": "https://ajasdevelopers.in/"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "GPS Map Camera Photo & Video",
-      "operatingSystem": "Android",
-      "applicationCategory": "PhotoApplication",
-      "description": "Capture photos and videos with real-time GPS location coordinates, reverse-geocoded address, altitude, and timestamps stamped directly onto your media.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "url": "https://play.google.com/store/apps/details?id=com.aistudio.gpscamera.vjqmks"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "QR & Barcode Pro",
-      "operatingSystem": "Android",
-      "applicationCategory": "UtilitiesApplication",
-      "description": "Fast, offline-first QR Code & Barcode Scanner and Generator for Android with zero data collection.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "url": "https://play.google.com/store/apps/details?id=com.yourcompany.code128generator"
-    }
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Radha Naam Jaap",
-      "operatingSystem": "Android",
-      "applicationCategory": "LifestyleApplication",
-      "description": "A simple and peaceful Android app for Radha Naam Jaap, designed for focused naam jap and daily spiritual practice.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "url": "https://ajasdevelopers.in/radha-naam-jaap.html"
-    }
-  ]
-  </script>
-
-  <!-- Inline SVG Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>" />
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css" />
-  
-  <!-- JavaScript -->
-  <script src="script.js" defer></script>
-</head>
-<body>
-  <!-- Skip to main content for accessibility -->
-  <a href="#home" class="skip-link">Skip to main content</a>
-
-  <!-- Navigation Bar -->
-  <nav class="navbar" id="navbar">
-    <div class="container nav-container">
-      <a href="#home" class="nav-brand" aria-label="AJAS Developers Homepage">
-        <div class="brand-icon-wrapper">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-            <polyline points="2 17 12 22 22 17"/>
-            <polyline points="2 12 12 17 22 12"/>
-          </svg>
-        </div>
-        <div class="brand-text-wrap">
-          <span class="brand-title">AJAS Developers</span>
-          <span class="brand-subtitle">Software Studio</span>
-        </div>
-      </a>
-
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#apps" class="nav-link">Apps</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#values" class="nav-link">Principles</a></li>
-        <li><a href="#support" class="nav-link">Support</a></li>
-        <li><a href="privacy-policy.html" class="nav-link">Privacy</a></li>
-        <li><a href="disclaimer.html" class="nav-link">Disclaimer</a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <!-- Theme Toggle -->
-        <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle color theme" title="Toggle theme">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
-
-        <a href="#apps" class="btn btn-primary btn-sm nav-cta-btn">
-          <span>Explore Apps</span>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
-          <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-          <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header class="section hero-section" id="home">
-    <div class="container hero-container-clean">
-      
-      <div class="hero-content-clean">
-        <div class="hero-eyebrow">
-          <span class="hero-eyebrow-dot"></span>
-          <span>AJAS DEVELOPERS</span>
-        </div>
-
-        <h1 class="hero-title">
-          Beautiful Android Apps.<br />
-          Built with Purpose.
-        </h1>
-
-        <p class="hero-text">
-          Useful apps and experiences, thoughtfully crafted for Android. We design focused, lightweight tools with privacy-first engineering.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="#apps" class="btn btn-primary btn-hero-cta">
-            <span>Explore Selected Apps</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#about" class="btn btn-secondary btn-hero-cta">
-            <span>About Studio</span>
-          </a>
-        </div>
-
-        <div class="hero-attributes-row">
-          <div class="hero-attr-pill">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-            <span>100% Android Native</span>
-          </div>
-          <div class="hero-attr-pill">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span>Privacy-First &amp; On-Device</span>
-          </div>
-          <div class="hero-attr-pill">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            <span>Fast &amp; Lightweight</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </header>
-
-  <!-- Selected Apps Section -->
-  <section class="section section-apps" id="apps">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag">
-          <span>BUILT FOR ANDROID</span>
-        </div>
-        <h2 class="section-title">Selected Apps</h2>
-        <p class="section-desc">Simple tools and experiences designed around real everyday needs.</p>
-      </div>
-
-      <!-- Apps Product Grid -->
-      <div class="apps-grid">
-        
-        <!-- App Card 1: GPS Map Camera Photo & Video -->
-        <article class="app-card" aria-labelledby="appCardHeading1">
-          <div class="app-card-body">
-            <div class="app-card-header">
-              <div class="app-icon-wrap icon-camera">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-                  <circle cx="12" cy="13" r="4"/>
-                </svg>
-              </div>
-              <span class="app-status-badge status-live">
-                <span class="status-dot"></span>
-                <span>Available Now</span>
-              </span>
-            </div>
-
-            <div class="app-category">Camera &amp; Documentation</div>
-            <h3 class="app-title" id="appCardHeading1">GPS Map Camera</h3>
-            <p class="app-desc">
-              Capture photos and videos with real-time GPS coordinates, address, and live timestamp overlays.
-            </p>
-
-            <div class="features-list">
-              <span class="feature-chip">GPS Geotag</span>
-              <span class="feature-chip">Live Timestamp</span>
-              <span class="feature-chip">Photo &amp; Video</span>
-            </div>
-          </div>
-
-          <div class="app-card-footer">
-            <a href="gps-map-camera.html" class="btn btn-secondary btn-card-action">Product Page</a>
-            <a href="https://play.google.com/store/apps/details?id=com.aistudio.gpscamera.vjqmks" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-card-action" aria-label="Get GPS Map Camera on Google Play">
-              <span>Google Play</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- App Card 2: QR & Barcode Pro -->
-        <article class="app-card" aria-labelledby="appCardHeading2">
-          <div class="app-card-body">
-            <div class="app-card-header">
-              <div class="app-icon-wrap icon-qr">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
-                  <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
-                  <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
-                  <path d="M14 14h3v3h-3z"></path>
-                  <path d="M18 17h3v3h-3z"></path>
-                </svg>
-              </div>
-              <span class="app-status-badge status-live">
-                <span class="status-dot"></span>
-                <span>Available Now</span>
-              </span>
-            </div>
-
-            <div class="app-category">Productivity &amp; Utility</div>
-            <h3 class="app-title" id="appCardHeading2">QR &amp; Barcode Pro</h3>
-            <p class="app-desc">
-              Fast, 100% offline QR code and barcode scanner and generator with zero tracking or data storage.
-            </p>
-
-            <div class="features-list">
-              <span class="feature-chip">Fast Scanner</span>
-              <span class="feature-chip">100% Offline</span>
-              <span class="feature-chip">Custom Generator</span>
-            </div>
-          </div>
-
-          <div class="app-card-footer">
-            <a href="qr-barcode-pro.html" class="btn btn-secondary btn-card-action">Product Page</a>
-            <a href="https://play.google.com/store/apps/details?id=com.yourcompany.code128generator" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-card-action" aria-label="Get QR and Barcode Pro on Google Play">
-              <span>Google Play</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- App Card 3: Arrow Escape (Upcoming) -->
-        <article class="app-card app-card-upcoming" aria-labelledby="appCardHeading3">
-          <div class="app-card-body">
-            <div class="app-card-header">
-              <div class="app-icon-wrap icon-game">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M5 12h14"></path>
-                  <path d="m12 5 7 7-7 7"></path>
-                  <circle cx="6" cy="12" r="2" fill="currentColor"></circle>
-                </svg>
-              </div>
-              <span class="app-status-badge status-upcoming">
-                <span class="status-dot-amber"></span>
-                <span>In Development</span>
-              </span>
-            </div>
-
-            <div class="app-category category-upcoming">Logic &amp; Puzzle Game</div>
-            <h3 class="app-title" id="appCardHeading3">Arrow Escape</h3>
-            <p class="app-desc">
-              A minimalist logic puzzle navigating directional arrow paths and untangling maze challenges.
-            </p>
-
-            <div class="features-list">
-              <span class="feature-chip">Logic Puzzle</span>
-              <span class="feature-chip">Brain Training</span>
-              <span class="feature-chip">Offline Play</span>
-            </div>
-          </div>
-
-          <div class="app-card-footer">
-            <a href="arrow-escape.html" class="btn btn-secondary btn-card-action" style="width: 100%;">
-              <span>Game Concept &amp; Details</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- App Card 4: Radha Naam Jaap -->
-        <article class="app-card" aria-labelledby="appCardHeading4">
-          <div class="app-card-body">
-            <div class="app-card-header">
-              <div class="app-icon-wrap icon-game" aria-hidden="true">
-                <span style="font-size: 30px; line-height: 1;">ॐ</span>
-              </div>
-              <span class="app-status-badge status-live">
-                <span class="status-dot"></span>
-                <span>Available Now</span>
-              </span>
-            </div>
-
-            <div class="app-category">Spirituality &amp; Meditation</div>
-            <h3 class="app-title" id="appCardHeading4">Radha Naam Jaap</h3>
-            <p class="app-desc">
-              A simple and peaceful app for focused Radha Naam Jaap, daily practice, and mindful spiritual moments.
-            </p>
-
-            <div class="features-list">
-              <span class="feature-chip">Naam Jaap</span>
-              <span class="feature-chip">Daily Practice</span>
-              <span class="feature-chip">Simple &amp; Peaceful</span>
-            </div>
-          </div>
-
-          <div class="app-card-footer">
-            <a href="radha-naam-jaap.html" class="btn btn-secondary btn-card-action">Product Page</a>
-            <a href="radha-naam-jaap.html" class="btn btn-primary btn-card-action" aria-label="Open Radha Naam Jaap">
-              <span>Explore App</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                <polyline points="15 3 21 3 21 9"/>
-                <line x1="10" y1="14" x2="21" y2="3"/>
-              </svg>
-            </a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Concise About Section -->
-  <section class="section section-about" id="about">
-    <div class="container">
-      <div class="about-compact-card">
-        <div class="about-compact-content">
-          <div class="section-tag">
-            <span>ABOUT AJAS</span>
-          </div>
-          <h2 class="about-compact-title">Small Studio. Thoughtful Software.</h2>
-          <p class="about-compact-text">
-            AJAS Developers is an independent Android development studio founded by <strong>Ajad</strong> and <strong>Ashu</strong>. We build lightweight, privacy-first mobile apps that solve real everyday tasks with speed, precision, and dependability.
-          </p>
-          <div class="about-compact-meta">
-            <span class="about-meta-pill">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              <span>Founded by Ajad &amp; Ashu</span>
-            </span>
-            <span class="about-meta-pill">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-              <span>100% Android Native</span>
-            </span>
-            <span class="about-meta-pill">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>Privacy &amp; Local Processing</span>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Studio Principles & Trust (Consolidated Minimal Row) -->
-  <section class="section section-values" id="values">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag">
-          <span>STUDIO PRINCIPLES</span>
-        </div>
-        <h2 class="section-title">Built on Quality &amp; Trust</h2>
-        <p class="section-desc">Grounded engineering values that guide every application we build.</p>
-      </div>
-
-      <div class="values-compact-grid">
-        <div class="value-item">
-          <div class="value-item-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <line x1="3" y1="9" x2="21" y2="9"/>
-              <line x1="9" y1="21" x2="9" y2="9"/>
-            </svg>
-          </div>
-          <h3 class="value-item-title">Simple</h3>
-          <p class="value-item-desc">Clear, uncluttered interfaces focused strictly on what matters.</p>
-        </div>
-
-        <div class="value-item">
-          <div class="value-item-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-          </div>
-          <h3 class="value-item-title">Private</h3>
-          <p class="value-item-desc">100% on-device processing. No unnecessary remote tracking or data harvesting.</p>
-        </div>
-
-        <div class="value-item">
-          <div class="value-item-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-            </svg>
-          </div>
-          <h3 class="value-item-title">Fast</h3>
-          <p class="value-item-desc">Lightweight native performance with minimal battery and memory overhead.</p>
-        </div>
-
-        <div class="value-item">
-          <div class="value-item-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-              <polyline points="22 4 12 14.01 9 11.01"/>
-            </svg>
-          </div>
-          <h3 class="value-item-title">Reliable</h3>
-          <p class="value-item-desc">Built to modern Android SDK standards with offline-first dependability.</p>
-        </div>
-      </div>
-
-      <!-- Clean Legal & Transparency Row -->
-      <div class="legal-compact-bar">
-        <div class="legal-compact-text">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <span>Transparent developer practices. Google Play policy compliant.</span>
-        </div>
-        <div class="legal-compact-links">
-          <a href="privacy-policy.html" class="legal-text-link">Privacy Policy &rarr;</a>
-          <a href="disclaimer.html" class="legal-text-link">Disclaimer &rarr;</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Clean Contact & Support Section -->
-  <section class="section section-support" id="support">
-    <div class="container">
-      <div class="support-compact-card">
-        <div class="support-compact-header">
-          <div class="section-tag">
-            <span>GET IN TOUCH</span>
-          </div>
-          <h2 class="support-compact-title">Have a question?</h2>
-          <p class="support-compact-desc">
-            Get in touch with AJAS Developers directly for support, feedback, or inquiries.
-          </p>
-        </div>
-
-        <div class="support-compact-actions">
-          <a href="mailto:iajadpatel@gmail.com?subject=AJAS%20Developers%20App%20Support" class="btn btn-primary btn-contact-action" aria-label="Send email to iajadpatel@gmail.com">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <span>Contact Support</span>
-          </a>
-
-          <button id="copyEmailBtn" class="btn btn-secondary btn-contact-action" aria-label="Copy Support Email Address to clipboard">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            <span id="supportEmailText">iajadpatel@gmail.com</span>
-          </button>
-        </div>
-
-        <!-- Compact FAQ Toggle Area -->
-        <div class="support-faq-wrapper">
-          <div class="faq-list">
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>Why does GPS Map Camera need location permissions?</span>
-                <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-              </button>
-              <div class="faq-answer">
-                Location permissions are used on-device solely to determine real-time coordinates, altitude, and street address to stamp onto your media. Location data is never uploaded to external servers.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>Does QR &amp; Barcode Pro work completely offline?</span>
-                <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-              </button>
-              <div class="faq-answer">
-                Yes. QR &amp; Barcode Pro performs 100% on-device optical character and barcode processing with zero internet connection required.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Minimalist Clean Footer -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-minimal-grid">
-        <!-- Brand & Summary -->
-        <div class="footer-brand-block">
-          <a href="#home" class="footer-brand-link" aria-label="AJAS Developers Home">
-            <div class="brand-icon-wrapper">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                <polyline points="2 17 12 22 22 17"/>
-                <polyline points="2 12 12 17 22 12"/>
-              </svg>
-            </div>
-            <div class="brand-text-wrap">
-              <span class="brand-title">AJAS Developers</span>
-              <span class="brand-subtitle">Software Studio</span>
-            </div>
-          </a>
-          <p class="footer-minimal-desc">
-            Independent Android software studio. Thoughtfully crafted mobile apps.
-          </p>
-        </div>
-
-        <!-- Essential Navigation Links -->
-        <div class="footer-links-row">
-          <a href="gps-map-camera.html" class="footer-link">GPS Map Camera</a>
-          <a href="qr-barcode-pro.html" class="footer-link">QR &amp; Barcode Pro</a>
-          <a href="arrow-escape.html" class="footer-link">Arrow Escape</a>
-          <a href="radha-naam-jaap.html" class="footer-link">Radha Naam Jaap</a>
-          <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
-          <a href="disclaimer.html" class="footer-link">Disclaimer</a>
-          <a href="ads.txt" target="_blank" class="footer-link">ads.txt</a>
-          <a href="https://play.google.com/store/apps/developer?id=AJAS+Developers" target="_blank" rel="noopener noreferrer" class="footer-link footer-link-ext">
-            <span>Play Store</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Footer Bottom Bar -->
-      <div class="footer-bottom-bar">
-        <div class="footer-copyright">
-          &copy; <span id="currentYear">2026</span> AJAS Developers. All rights reserved.
-        </div>
-        <div class="footer-bottom-meta">
-          <span>Founded by Ajad &amp; Ashu</span>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-</body>
-</html>
+</body></html>
