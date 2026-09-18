@@ -1,7 +1,14 @@
 <!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>AJAS Developers — Simple, Useful &amp; Beautiful Android Apps</title>
+<title>AJAS Developers — Android Apps Built with Purpose</title>
+<meta name="description" content="AJAS Developers builds simple, useful and privacy-focused Android apps including GPS Map Camera, QR & Barcode Pro, and Radha Naam Jaap.">
+<meta name="theme-color" content="#2563EB">
+<meta property="og:title" content="AJAS Developers — Android Apps Built with Purpose">
+<meta property="og:description" content="Simple, useful and privacy-focused Android apps from AJAS Developers.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ajasdevelopers.in/">
+<link rel="canonical" href="https://ajasdevelopers.in/">
 <link href="https://fonts.googleapis.com" rel="preconnect">
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -99,6 +106,20 @@
       max-width: 100%;
     }
 
+    :focus-visible {
+      outline: 3px solid rgba(37, 99, 235, 0.35);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto !important; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
     .mesh-gradient-bg {
       background-color: #FAFAFD;
       background-image: 
@@ -145,6 +166,7 @@
 <a class="px-4 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white/80 rounded-full transition-all" href="#featured">Featured</a>
 <a class="px-4 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white/80 rounded-full transition-all" href="#about">About</a>
 <a class="px-4 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white/80 rounded-full transition-all" href="#support">Support</a>
+<a class="px-4 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white/80 rounded-full transition-all" href="#updates">Updates</a>
 </nav>
 <!-- CTA & Play Store Link -->
 <div class="flex items-center gap-3">
@@ -162,7 +184,7 @@
 </div>
 </div>
 <!-- Mobile Nav Flyout -->
-<div class="hidden md:hidden px-4 pt-2 pb-6 bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-xl" id="mobile-nav-panel">
+<div class="hidden md:hidden px-4 pt-2 pb-6 bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-xl max-h-[calc(100vh-5rem)] overflow-y-auto" id="mobile-nav-panel">
 <nav class="flex flex-col gap-2">
 <a class="px-4 py-2.5 rounded-xl font-semibold text-blue-600 bg-blue-50/80" href="#">Home</a>
 <a class="px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-slate-50" href="#categories">Categories</a>
@@ -170,6 +192,7 @@
 <a class="px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-slate-50" href="#featured">Featured App</a>
 <a class="px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-slate-50" href="#about">About AJAS</a>
 <a class="px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-slate-50" href="#support">Support &amp; FAQ</a>
+<a class="px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-slate-50" href="#updates">Latest Updates</a>
 <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
 <a class="inline-flex items-center gap-2 text-sm font-semibold text-slate-700" href="https://play.google.com/store" rel="noopener noreferrer" target="_blank">
 <span class="material-symbols-outlined text-[18px] text-blue-600">shop</span>
@@ -203,10 +226,10 @@
 </div>
 <!-- Main Heading with Rich Gradient Text Accent -->
 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
-              Building <span class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">Simple, Useful &amp; Beautiful</span> Apps.
+              Android Apps <span class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">Built for Real Life.</span>
             </h1>
 <p class="text-lg sm:text-xl text-slate-600 max-w-2xl leading-relaxed font-normal">
-              AJAS Developers creates practical Android applications designed to make everyday tasks simpler, faster and more useful. Thoughtfully crafted tools with on-device processing and zero unnecessary permissions.
+              AJAS Developers creates practical Android applications designed to make everyday tasks simpler, faster and more useful. Thoughtfully crafted tools with a focus on privacy, performance and straightforward user experiences.
             </p>
 <!-- Main Action Buttons -->
 <div class="flex flex-wrap items-center gap-3.5 pt-2">
@@ -244,6 +267,21 @@
 <span class="">Fast &amp; Lightweight</span>
 </div>
 </div>
+<!-- Compact studio stats -->
+<div class="grid grid-cols-3 gap-3 w-full max-w-xl pt-2">
+  <div class="rounded-2xl bg-white/80 backdrop-blur border border-slate-200 px-4 py-3 shadow-sm">
+    <div class="text-xl font-extrabold text-slate-900">3+</div>
+    <div class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Live Apps</div>
+  </div>
+  <div class="rounded-2xl bg-white/80 backdrop-blur border border-slate-200 px-4 py-3 shadow-sm">
+    <div class="text-xl font-extrabold text-slate-900">Native</div>
+    <div class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Android Focus</div>
+  </div>
+  <div class="rounded-2xl bg-white/80 backdrop-blur border border-slate-200 px-4 py-3 shadow-sm">
+    <div class="text-xl font-extrabold text-slate-900">Privacy</div>
+    <div class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">First Mindset</div>
+  </div>
+</div>
 </div>
 <!-- Hero Right: Isometric / Floating Multi-Layered App Cards Graphic -->
 <div class="lg:col-span-5 relative flex justify-center items-center py-8">
@@ -262,9 +300,9 @@
 <p class="text-xs font-medium text-slate-500">Live Location Stamping</p>
 </div>
 </div>
-<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-[11px] font-bold tracking-wider">
-<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    ACTIVE
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-[11px] font-bold tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                    APP PREVIEW
                   </span>
 </div>
 <!-- Simulated Viewfinder with Live Stamp Overlay -->
@@ -995,7 +1033,52 @@ A fun and colorful casual game currently being developed by AJAS Developers.
 </div>
 </div>
 </section>
-<!-- 9. PRE-FOOTER VIBRANT CALL TO ACTION (FINAL CTA) -->
+<!-- 9. LATEST UPDATES -->
+<section class="py-16 lg:py-20 relative scroll-mt-20" id="updates">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-3">
+          <span class="material-symbols-outlined text-[16px]">new_releases</span>
+          <span>Studio Updates</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">What’s happening at AJAS</h2>
+        <p class="mt-3 text-base sm:text-lg text-slate-600 max-w-2xl">A quick look at current products and the direction of the studio.</p>
+      </div>
+      <a href="#apps" class="inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700">
+        View all apps
+        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <article class="rounded-3xl bg-white border border-blue-100 p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
+        <div class="w-11 h-11 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5">
+          <span class="material-symbols-outlined">photo_camera</span>
+        </div>
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-600">GPS Map Camera</span>
+        <h3 class="mt-2 text-xl font-bold text-slate-900">Camera experience evolving</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">Continuing to improve the camera, location stamping, templates and overall field-documentation experience.</p>
+      </article>
+      <article class="rounded-3xl bg-white border border-pink-100 p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
+        <div class="w-11 h-11 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center mb-5">
+          <span class="material-symbols-outlined">self_improvement</span>
+        </div>
+        <span class="text-xs font-bold uppercase tracking-wider text-pink-600">Radha Naam Jaap</span>
+        <h3 class="mt-2 text-xl font-bold text-slate-900">A calmer daily experience</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">A focused devotional companion built around simple counting, local storage and an uncluttered experience.</p>
+      </article>
+      <article class="rounded-3xl bg-white border border-cyan-100 p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
+        <div class="w-11 h-11 rounded-2xl bg-cyan-50 text-cyan-600 flex items-center justify-center mb-5">
+          <span class="material-symbols-outlined">qr_code_2</span>
+        </div>
+        <span class="text-xs font-bold uppercase tracking-wider text-cyan-600">QR &amp; Barcode Pro</span>
+        <h3 class="mt-2 text-xl font-bold text-slate-900">Fast utility, less friction</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">A straightforward scanner and generator focused on speed, local processing and practical everyday use.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- 10. PRE-FOOTER VIBRANT CALL TO ACTION (FINAL CTA) -->
 <section class="py-16 lg:py-20 relative overflow-hidden">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="relative rounded-3xl lg:rounded-[36px] bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 p-8 sm:p-12 lg:p-16 text-center text-white shadow-2xl overflow-hidden">
